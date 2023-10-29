@@ -9,7 +9,7 @@ export const Main = () => {
       <Logo src="/imgs/MainLogo.png" alt=""/>
     </LogoBox>
     <InteractBox>
-      <Button text="바로 시작하기" action={() => {}} width="280px" />
+      <Button text="바로 시작하기" action={() => navigate("/signup")} />
       <LoginText onClick={() => navigate("/login")}>이미 계정이 있으신가요? 로그인하기</LoginText>
     </InteractBox>
   </Wrapper>
@@ -45,7 +45,7 @@ const Logo = styled.img`
 const LoginText = styled.h1`
   font-size: 10px;
   color: #5C5960;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   &:active {
     color: #DEDEE0;
