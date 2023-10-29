@@ -1,11 +1,14 @@
 import { styled } from 'styled-components';
 import { Router } from './Router/Router';
 import { GlobalStyle } from './Styles/globalstyle';
+import { RecoilRoot } from 'recoil';
 
 export const App = () => {
   return <Wrapper>
-    <GlobalStyle />
-    <Router />
+    <RecoilRoot>
+      <GlobalStyle />
+      <Router />
+    </RecoilRoot>
   </Wrapper>
 }
 
