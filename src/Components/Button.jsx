@@ -1,26 +1,20 @@
-import { styled } from 'styled-components';
+import styled from "styled-components";
 
-export const Button = ({ text, action, width, height, disabled }) => {  
-  return <Content onClick={action} width={width} height={height} disabled={disabled}>
+export const Button = ({ text, style, id }) => {
+  return <Wrapper style={style} id={id}>
     {text}
-  </Content>
+  </Wrapper>
 }
 
-const Content = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  padding: 10px;
+const Wrapper = styled.div`
+  background: #D9D9D9;
+  color: #8C8C8C;
+  padding: 10px 15px 10px 15px;
   box-sizing: border-box;
-  font-size: 12px;
-  background: ${({disabled}) => disabled ? "#EADCFF" : "#9550F9"};
-  font-weight: 400;
-  color: #ffffff;
-  cursor: ${({disabled}) => disabled ? "not-allowed" : "pointer"};
-  width: ${({width}) => width ? width : "250px"};
-  height: ${({height}) => height ? height : "40px"};
-  &:active {
-    background: #EADCFF;
+  border-radius: 15px;
+  cursor: pointer;
+  &#selected {
+    background: #9550F9;
+    color: #ffffff;
   }
 `
