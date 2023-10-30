@@ -13,8 +13,10 @@ export const App = () => {
 }
 
 const Wrapper = styled.div`
-  width: 300px;
-  height: 550px;
-  background: #ffffff;
+  width: 450px;
+  height: 450px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #F9F7FA;
   font-family: 'Noto Sans KR';
 `
