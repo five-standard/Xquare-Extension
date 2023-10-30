@@ -1,28 +1,25 @@
 /*global chrome*/
 import { MemoryRouter, Routes, Route } from "react-router-dom";
-import { Main } from "../Pages/Main";
-import { Login } from "../Pages/Login";
-import { SignUp } from "../Pages/SignUp";
 import { Home } from "../Pages/Home";
+import { Layout } from "./Layout";
+import { TimeTable } from "../Pages/TimeTable";
+import { Apply } from "../Pages/Apply";
 import { token } from "../Utils/Atoms";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 export const Router = () => {
-  const [accessToken, setAccessToken] = useRecoilState(token);
-  chrome.cookies.get({url: "http://localhost:3000", name: "accessToken"}).then(res => res && setAccessToken(res.value));
-  
+  const setAccessToken = useSetRecoilState(token);
+  chrome.cookies.get({url: "http://localhost:3000", name:"accessToken"}).then(res => {
+      if(res.value) setAccessToken(res.value);
+  })
+
   return <MemoryRouter>
     <Routes>
-      { !accessToken
-        ? <>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </>
-        : <>
-        <Route path="/" element={<Home />} />
-        </>
-      }
+      <Route path="/" element={<Layout />}>
+        <Route path="" element={<Home />} />
+        <Route path="timetable" element={<TimeTable />} />
+        <Route path="apply" element={<Apply />} />
+      </Route>
     </Routes>
   </MemoryRouter>
 }
