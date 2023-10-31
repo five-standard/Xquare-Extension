@@ -1,3 +1,4 @@
+/*global chrome*/
 import styled from "styled-components"
 import { Box } from "../../components/Box"
 import { useEffect, useState } from "react"
@@ -6,25 +7,24 @@ import { useRecoilValue } from "recoil";
 import { token } from "../../Utils/Atoms";
 
 export const TimeTable = () => {
-  const [timeTable, setTimeTable] = useState();
+  const [timeTable, setTimeTable] = useState([]);
   const accessToken = useRecoilValue(token);
   const date = new Date();
   const days = ["일", "월", "화", "수", "목", "금", "토"];
 
   useEffect(() => {
-    console.log(accessToken);
     getTimeTable(accessToken).then(res => {
       setTimeTable(res.data.week_timetable);
-    })
-  }, [])
+    });
+  }, [accessToken])
 
   return <Wrapper>
     <Box style={{"align-items": "center", "flex-direction": "column"}}>
       <h1 style={{"align-self": "flex-start"}}>시간표 ({days[date.getDay()]})</h1>
       <SubjDataBox>
         {
-          date.getDay() !== 0 && date.getDay() !== 6
-          ? timeTable[date.getDay()-1].day_timeTable.map((i, k) => {
+          date.getDay() !== 0 && date.getDay() !== 6 && timeTable[date.getDay()-1]
+          ? timeTable[date.getDay()-1].day_timetable.map((i, k) => {
             return <SubjectBox>
               <div id="class" key={k}>
                 <h1>{i.subject_name}</h1>
