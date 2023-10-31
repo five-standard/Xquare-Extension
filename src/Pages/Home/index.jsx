@@ -5,6 +5,7 @@ import { getTodayMeals } from "../../Api/Meal"
 import { token } from "../../Utils/Atoms"
 import { useRecoilValue } from "recoil"
 import { getUserSimple } from "../../Api/User"
+import { useNavigate } from "react-router-dom"
 
 export const Home = () => {
   const [meals, setMeals] = useState({
@@ -24,6 +25,7 @@ export const Home = () => {
   const date = new Date();
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const accessToken = useRecoilValue(token);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTodayMeals().then(res => {
@@ -49,7 +51,7 @@ export const Home = () => {
   }, [accessToken])
 
   return <Wrapper>
-    <Box height="70px" style={{"padding-right": "20px"}}>
+    <Box height="70px" style={{"padding-right": "20px", "cursor": "pointer"}} action={() => !accessToken && navigate("/login")}>
       <img src={accessToken ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
       {
         accessToken
