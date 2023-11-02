@@ -7,5 +7,6 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     border: none;
     font-weight: 400;
+    font-family: 'Noto Sans KR';
   }
 `;
