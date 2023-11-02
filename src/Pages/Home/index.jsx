@@ -29,29 +29,21 @@ export const Home = () => {
 
   useEffect(() => {
     getTodayMeals().then(res => {
-      setMeals({
-        breakfast: res.data.breakfast,
-        lunch: res.data.lunch,
-        dinner: res.data.dinner,
-        breakfast_Kcal: res.data.breakfast_kcal,
-        lunch_Kcal: res.data.lunch_kcal,
-        dinner_Kcal: res.data.dinner_kcal,
+      Object.keys(meals).map(key => {
+        setMeals({...meals, [key]: res.data[key]})
       })
-    })
+    }).catch(() => {})
     if(accessToken) {
       getUserSimple(accessToken).then(res => {
-        setUser({
-          name: res.data.name,
-          good_point: res.data.good_point,
-          bad_point: res.data.bad_point,
-          profile_file_name: res.data.profile_file_name
+        Object.keys(user).map(key => {
+          setUser({...user, [key]: res.data[key]})
         })
-      })
+      }).catch(() => {})
     }
-  }, [accessToken])
+  }, [])
 
   return <Wrapper>
-    <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "cursor" : "default"}`}} action={() => !accessToken && navigate("/login")}>
+    <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
       <ProfileBox>
         <img src={accessToken ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
         {
@@ -151,5 +143,6 @@ const MealDataBox = styled.div`
 
 const ProfileBox = styled.div`
   display: flex;
+  align-items: center;
   gap: 15px;
 `
