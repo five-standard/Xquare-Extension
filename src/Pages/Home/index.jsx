@@ -51,16 +51,18 @@ export const Home = () => {
   }, [accessToken])
 
   return <Wrapper>
-    <Box height="70px" style={{"padding-right": "20px", "cursor": "pointer"}} action={() => !accessToken && navigate("/login")}>
-      <img src={accessToken ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
-      {
-        accessToken
-        ? <DataBox>
-          <h1>{user.name}</h1>
-          <h2>상점 {user.good_point}점 벌점 {user.bad_point}점</h2>
-        </DataBox> 
-        : <h1 style={{"font-size": "20px", "color": "#5C5960"}}>로그인하세요</h1>
-      }
+    <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "cursor" : "default"}`}} action={() => !accessToken && navigate("/login")}>
+      <ProfileBox>
+        <img src={accessToken ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
+        {
+          accessToken
+          ? <DataBox>
+            <h1>{user.name}</h1>
+            <h2>상점 {user.good_point}점 벌점 {user.bad_point}점</h2>
+          </DataBox> 
+          : <h1 style={{"font-size": "20px", "color": "#5C5960"}}>로그인하세요</h1>
+        }
+      </ProfileBox>
     </Box>
     <Box style={{"align-items": "center", "flex-direction": "column"}}>
       <h1 style={{"align-self": "flex-start"}}>{date.getFullYear()}-{date.getMonth()+1}-{date.getDate()} ({days[date.getDay()]})</h1>
@@ -145,4 +147,9 @@ const MealDataBox = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+`
+
+const ProfileBox = styled.div`
+  display: flex;
+  gap: 15px;
 `
