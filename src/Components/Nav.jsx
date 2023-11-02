@@ -17,7 +17,6 @@ export const Nav = () => {
   }
 
   return <Wrapper>
-    <img src="/imgs/svg/Settings.svg" alt="" />
     <Points>
       <Point token={accessToken} id={cnt===1 && "selected"} className=" 1" onClick={setNav} />
       <Point token={accessToken} id={cnt===2 && "selected"} className="timetable 2" onClick={setNav} />
@@ -29,10 +28,9 @@ export const Nav = () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 99fr;
-  place-items: center center;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-bottom: 10px;
 `
 
