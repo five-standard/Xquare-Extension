@@ -25,10 +25,12 @@ export const TimeTable = () => {
         {
           date.getDay() !== 0 && date.getDay() !== 6 && timeTable[date.getDay()-1]
           ? timeTable[date.getDay()-1].day_timetable.map((i, k) => {
+            const begin = i.begin_time.split(":");
+            const end = i.end_time.split(":");
             return <SubjectBox>
               <div id="class" key={k}>
                 <h1>{i.subject_name}</h1>
-                <h2>{i.begin_time} ~ {i.end_time}</h2>
+                <h2>{begin[0]}:{begin[1]} ~ {end[0]}:{end[1]}</h2>
               </div>
               <img src={i.subject_image} alt="" width={40} height={40} />
             </SubjectBox>
