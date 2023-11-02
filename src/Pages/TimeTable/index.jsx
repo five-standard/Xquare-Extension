@@ -16,7 +16,7 @@ export const TimeTable = () => {
     getTimeTable(accessToken).then(res => {
       setTimeTable(res.data.week_timetable);
     });
-  }, [accessToken])
+  }, [])
 
   return <Wrapper>
     <Box style={{"align-items": "center", "flex-direction": "column"}}>
