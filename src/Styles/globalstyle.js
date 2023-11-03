@@ -1,12 +1,12 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   * {
-    user-select: none;
     margin: 0;
-    outline: none;
     border: none;
+    outline: none;
     font-weight: 400;
-    font-family: 'Noto Sans KR';
+    user-select: none;
+    font-family: "Noto Sans KR";
   }
 `;
