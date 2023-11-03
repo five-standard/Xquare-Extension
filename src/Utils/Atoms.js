@@ -1,6 +1,11 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const token = atom({
-    key: 'token',
+    key: "token",
     default: undefined,
+});
+
+export const refresh = atom({
+  key: "refresh",
+  default: undefined,
 });
