@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
-import { Router } from './Router/Router';
-import { GlobalStyle } from './Styles/globalstyle';
-import { RecoilRoot } from 'recoil';
+import styled from "styled-components";
+import { RecoilRoot } from "recoil";
+import { GlobalStyle } from "./Styles/globalstyle";
+import { Router } from "./Router/Router";
 
 export const App = () => {
   return <Wrapper>
@@ -18,5 +18,5 @@ const Wrapper = styled.div`
   padding: 10px;
   box-sizing: border-box;
   background: #F9F7FA;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
 `
