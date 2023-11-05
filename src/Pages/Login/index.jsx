@@ -37,7 +37,7 @@ export const Login = () => {
     <_.InputBox>
       <Input placeholder="아이디" value={data.account_id} action={handleChange} id="account_id" />
       <Input placeholder="비밀번호" value={data.password} action={handleChange} id="password" type="password" />
-      <Button action={handleSubmit} text="로그인" style={{"width": "70%", "height": "50px", "display": "flex", "align-items": "center", "justify-content": "center", "font-size": "20px", "font-weight": "500"}} id="selected" />
+      <Button action={handleSubmit} text="로그인" style={{"width": "70%", "height": "50px", "font-size": "20px"}} id="selected" />
     </_.InputBox>
   </_.Wrapper>
 }
