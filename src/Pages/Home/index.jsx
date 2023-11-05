@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { getTodayMeals } from "../../Api/Meal";
 import { getUserSimple } from "../../Api/User";
+import { days } from "../../Utils/DataTypes";
 import { postLogout } from "../../Api/Auth";
 import { Box } from "../../components/Box";
 import { token } from "../../Utils/Atoms";
@@ -25,7 +26,6 @@ export const Home = () => {
     profile_file_name: ""
   })
   const [accessToken, setAccessToken] = useRecoilState(token);
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
   const navigate = useNavigate();
   const date = new Date();
 
@@ -39,7 +39,7 @@ export const Home = () => {
 
   useEffect(() => {
     accessToken && getUserSimple(accessToken).then(res => {
-      res.data.name && Object.keys(user).map(key => {
+      Object.keys(user).map(key => {
         setUser(user => { return {...user, [key]: res.data[key]} })
       })
     }).catch(() => {})

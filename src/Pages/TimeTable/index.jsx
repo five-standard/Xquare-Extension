@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { getTimeTable } from "../../Api/TimeTable";
-import { Box } from "../../components/Box"
+import { days } from "../../Utils/DataTypes";
+import { Box } from "../../components/Box";
 import { token } from "../../Utils/Atoms";
 import * as _ from "./style";
 
 export const TimeTable = () => {
   const [timeTable, setTimeTable] = useState(undefined);
   const accessToken = useRecoilValue(token);
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
   const today = new Date().getDay();
 
   useEffect(() => {
