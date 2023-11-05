@@ -7,12 +7,15 @@ export const Button = ({ text, style, id, action }) => {
 }
 
 const Wrapper = styled.div`
-  background: #D9D9D9;
-  color: #8C8C8C;
-  padding: 10px 15px 10px 15px;
-  box-sizing: border-box;
-  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  border-radius: 15px;
+  background: #D9D9D9;
+  box-sizing: border-box;
+  padding: 10px 15px 10px 15px;
+  color: #8C8C8C;
   &#selected {
     background: #9550F9;
     color: #ffffff;
