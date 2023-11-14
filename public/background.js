@@ -1,1 +1,1 @@
-chrome.cookies.get({url: "http://localhost:3000", name: "accessToken"}).then(res => console.log(res));
+console.log("로드되었습니다.");
