@@ -1,12 +1,11 @@
-/*global chrome*/
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
 import { useState } from "react";
-import { refresh, token } from "../../Utils/Atoms";
+import { Cookie } from "../../Utils/Objs";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { postLogin } from "../../Api/Auth";
 import * as _ from "./style";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [data, setData] = useState({
@@ -14,8 +13,6 @@ export const Login = () => {
     password: "",
     device_token: ""
   })
-  const setAccessToken = useSetRecoilState(token);
-  const setRefreshToken = useSetRecoilState(refresh);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,12 +21,13 @@ export const Login = () => {
 
   const handleSubmit = () => {
     postLogin(data).then(res => {
-      setAccessToken(res.data.access_token);
-      setRefreshToken(res.data.refresh_token);
-      chrome.cookies.set({url: "http://localhost:3000", name:"accessToken", value: res.data.access_token})
-      chrome.cookies.set({url: "http://localhost:3000", name:"refreshToken", value: res.data.refresh_token})
+      Cookie.set("accessToken", res.data.access_token, {path:"/"});
+      Cookie.set("refreshToken", res.data.refresh_token, {path:"/"});
       navigate("/");
-    }).catch(() => {})
+      toast.success(`로그인되었습니다 (${data.account_id})`);
+    }).catch(e => {
+      toast.error(`로그인에 실패했습니다. (${e.response.data.error_message.split(".")[0]})`);
+    })
   }
 
   return <_.Wrapper>
