@@ -10,7 +10,6 @@ export const postLogout = async () => {
 
 export const postRefresh = async (token) => {
   return await instance.put("/users/login", {}, { headers: {
-    Authorization: undefined,
     "Refresh-Token": `Bearer ${token}`
   }})
 }
