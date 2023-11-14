@@ -1,26 +1,27 @@
-/*global chrome*/
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { getTimeTable } from "../../Api/TimeTable";
 import { days } from "../../Utils/DataTypes";
 import { Box } from "../../components/Box";
-import { token } from "../../Utils/Atoms";
+import { updator } from "../../Utils/Atoms";
+import { useRecoilValue } from "recoil";
+import { Dates } from "../../Utils/Objs";
 import * as _ from "./style";
+import { toast } from "react-toastify";
 
 export const TimeTable = () => {
   const [timeTable, setTimeTable] = useState(undefined);
-  const accessToken = useRecoilValue(token);
-  const today = new Date().getDay();
+  const today = Dates.getDay();
+  const update = useRecoilValue(updator);
 
   useEffect(() => {
-    getTimeTable(accessToken).then(res => {
+    getTimeTable().then(res => {
       res.data.week_timetable.map((i, k) => {
         if(i.week_day === today) {
           setTimeTable(res.data.week_timetable[k].day_timetable);
         }
       })
     }).catch(() => {})
-  }, [])
+  }, [update])
 
   return <_.Wrapper>
     <Box style={{"align-items": "center", "flex-direction": "column"}}>
