@@ -1,14 +1,12 @@
-/*global chrome*/
 import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
-import axios from "axios";
-import { refresh, token } from "../Utils/Atoms";
+import { updator } from "../Utils/Atoms";
 import { postRefresh } from "../Api/Auth";
 import { instance } from "../Api/axios";
+import { Cookie } from "../Utils/Objs";
 
 export const useRefresh = () => {
-  const setAccessToken = useSetRecoilState(token);
-  const setRefreshToken = useSetRecoilState(refresh);
+  const setUpdate = useSetRecoilState(updator);
 
   const error = instance.interceptors.response.use(
     res => { return res },
@@ -18,18 +16,12 @@ export const useRefresh = () => {
         response: { status },
       } = err;
       if(status === 403) {
-        chrome.cookies.get({url: "http://localhost:3000", name: "refreshToken"}).then(res =>
-          res && postRefresh(res.value).then(res =>
-            {
-              chrome.cookies.set({url: "http://localhost:3000", name:"accessToken", value: res.data.access_token});
-              chrome.cookies.set({url: "http://localhost:3000", name:"refreshToken", value: res.data.refresh_token});
-              setAccessToken(res.data.access_token);
-              setRefreshToken(res.data.refresh_token);
-              config.headers.authorization = `Bearer ${res.data.access_token}`;
-              return axios(config)
-            }
-          )
-        )
+        const refreshToken = Cookie.get("refreshToken");
+        postRefresh(refreshToken).then(res => {
+          Cookie.set("accessToken", res.data.access_token);
+          Cookie.set("refreshToken", res.data.refresh_token);
+          setUpdate(update => !update);
+        })
       } else {
         return Promise.reject(err);
       }
