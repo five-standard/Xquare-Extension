@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Button = ({ text, style, id, action }) => {
-  return <Wrapper style={style} id={id} onClick={action} >
+export const Button = ({ text, style, id, className, action }) => {
+  return <Wrapper style={style} id={id} onClick={action} className={className} >
     {text}
   </Wrapper>
 }
