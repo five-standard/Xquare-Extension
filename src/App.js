@@ -1,11 +1,14 @@
+import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 import { RecoilRoot } from "recoil";
 import { GlobalStyle } from "./Styles/globalstyle";
+import 'react-toastify/dist/ReactToastify.css';
 import { Router } from "./Router/Router";
 
 export const App = () => {
   return <Wrapper>
     <RecoilRoot>
+      <ToastContainer position="bottom-center" autoClose={1500} />
       <GlobalStyle />
       <Router />
     </RecoilRoot>
