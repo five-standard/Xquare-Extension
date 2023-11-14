@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom"
-import { token } from "../Utils/Atoms";
-import { useRecoilValue } from "recoil";
+import { Cookie } from "../Utils/Objs";
 import styled from "styled-components"
 import { useState } from "react";
 
 export const Nav = () => {
   const navigate = useNavigate();
   const [cnt, setCnt] = useState(1);
-  const accessToken = useRecoilValue(token);
+  const accessToken = Cookie.get("accessToken");
 
   const setNav = (e) => {
     if(accessToken) {
