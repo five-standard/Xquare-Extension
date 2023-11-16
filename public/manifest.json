@@ -11,10 +11,6 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["cookies"],
-  "host_permissions": [
-    "*://*/*"
-  ],
   "background": {
     "service_worker": "background.js"
   }
