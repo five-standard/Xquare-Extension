@@ -4,6 +4,7 @@ import { TimeTable } from "../Pages/TimeTable";
 import { Login } from "../Pages/Login";
 import { Home } from "../Pages/Home";
 import { Dev } from "../Pages/Dev";
+import { All } from "../Pages/All";
 import { Layout } from "./Layout";
 
 export const Router = () => {
@@ -13,7 +14,7 @@ export const Router = () => {
         <Route path="" element={<Home />} />
         <Route path="timetable" element={<TimeTable />} />
         <Route path="apply" element={<Dev />} />
-        <Route path="all" element={<Dev />} />
+        <Route path="all" element={<All />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>
