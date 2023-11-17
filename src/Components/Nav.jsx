@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router-dom"
-import { Cookie } from "../Utils/Objs";
 import styled from "styled-components"
 import { useState } from "react";
+import { Cookie } from "../Utils/Utilities";
 
 export const Nav = () => {
   const navigate = useNavigate();
   const [cnt, setCnt] = useState(1);
-  const accessToken = Cookie.get("accessToken");
+  const sections = ["", "timetable", "apply", "all"];
+  const isAccessToken = Cookie.get("accessToken") !== undefined;
 
   const setNav = (e) => {
-    if(accessToken) {
+    if(isAccessToken) {
       navigate(`/${e.target.className.split(" ")[2]}`)
       setCnt(Number(e.target.className.split(" ")[3]))
     }
@@ -17,10 +18,9 @@ export const Nav = () => {
 
   return <Wrapper>
     <Points>
-      <Point token={accessToken} id={cnt===1 && "selected"} className=" 1" onClick={setNav} />
-      <Point token={accessToken} id={cnt===2 && "selected"} className="timetable 2" onClick={setNav} />
-      <Point token={accessToken} id={cnt===3 && "selected"} className="apply 3" onClick={setNav} />
-      <Point token={accessToken} id={cnt===4 && "selected"} className="all 4" onClick={setNav} />
+      {
+        sections.map((i, j) => <Point token={isAccessToken} className={`${i} ${j+1}`} id={cnt===j+1 && "selected"} onClick={setNav} />)
+      }
     </Points>
   </Wrapper>
 }
@@ -28,24 +28,22 @@ export const Nav = () => {
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding-bottom: 10px;
 `
 
 const Points = styled.div`
-  display: flex;
   gap: 8px;
+  display: flex;
   align-items: center;
 `
 
 const Point = styled.div`
   width: 15px;
   height: 15px;
-  background: #D9D9D9;
   border-radius: 65px;
+  background: #D9D9D9;
   cursor: ${({token}) => token ? "pointer" : "not-allowed"};
-  &#selected {
-    background: #9550F9;
-  }
+  &#selected { background: #9550F9; }
 `
