@@ -11,16 +11,14 @@ export const useRefresh = () => {
   const error = instance.interceptors.response.use(
     res => { return res },
     err => {
-      const {
-        config,
-        response: { status },
-      } = err;
+      const { status } = err;
       if(status === 403) {
         const refreshToken = Cookie.get("refreshToken");
         postRefresh(refreshToken).then(res => {
           Cookie.set("accessToken", res.data.access_token);
           Cookie.set("refreshToken", res.data.refresh_token);
           setUpdate(update => !update);
+          return;
         })
       } else {
         return Promise.reject(err);
