@@ -32,7 +32,7 @@ export const Apply = () => {
   }
 
   return <Wrapper>
-    <Box style={{"justify-content": "space-between"}}>
+    <Box>
       <h1>잔류 신청</h1>
       <ButtonBox>
         {
@@ -42,7 +42,7 @@ export const Apply = () => {
         }
       </ButtonBox>
     </Box>
-    <Box style={{"justify-content": "space-between"}}>
+    <Box>
       <h1>주말급식 신청</h1>
       <ButtonBox>
         <Button text="신청" />
