@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useState } from "react";
-import { Cookie } from "../../Utils/Objs";
+import { Cookie, messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { postLogin } from "../../Api/Auth";
 import * as _ from "./style";
-import { toast } from "react-toastify";
 
 export const Login = () => {
   const [data, setData] = useState({
@@ -24,9 +24,9 @@ export const Login = () => {
       Cookie.set("accessToken", res.data.access_token, {path:"/"});
       Cookie.set("refreshToken", res.data.refresh_token, {path:"/"});
       navigate("/");
-      toast.success(`로그인되었습니다 (${data.account_id})`);
+      toast.success(<b>{messages.login_success} ({data.account_id})</b>);
     }).catch(e => {
-      toast.error(`로그인에 실패했습니다. (${e.response.data.error_message.split(".")[0]})`);
+      toast.error(<b>{messages.login_fail} ({e.response.data.error_message.split(".")[0]})</b>);
     })
   }
 
