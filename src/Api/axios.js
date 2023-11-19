@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Cookie } from '../Utils/Objs';
+import { Cookie } from '../Utils/Utilities';
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_KEY,
@@ -15,7 +15,6 @@ instance.interceptors.request.use(
     return res;
   },
   err => { 
-    Promise.reject(err);
-    return err;
+    return Promise.reject(err);
   }
 )

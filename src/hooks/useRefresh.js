@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { updator } from "../Utils/Atoms";
 import { postRefresh } from "../Api/Auth";
 import { instance } from "../Api/axios";
-import { Cookie } from "../Utils/Objs";
+import { Cookie } from "../Utils/Utilities";
 
 export const useRefresh = () => {
   const setUpdate = useSetRecoilState(updator);
@@ -11,7 +11,10 @@ export const useRefresh = () => {
   const error = instance.interceptors.response.use(
     res => { return res },
     err => {
-      const { status } = err;
+      const { 
+        config,
+        response: { status } 
+      } = err;
       if(status === 403) {
         const refreshToken = Cookie.get("refreshToken");
         postRefresh(refreshToken).then(res => {
