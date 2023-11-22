@@ -60,7 +60,7 @@ export const Home = () => {
   return <_.Wrapper>
     <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
       <_.ProfileBox>
-        <img src={accessToken ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
+        <img src={accessToken && user.profile_file_name !== "" ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
         {
           accessToken
           ? <_.DataBox>
