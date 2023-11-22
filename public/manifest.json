@@ -2,7 +2,7 @@
   "name": "Xquare",
   "description": "Xquare extension for chromium",
   "manifest_version": 3,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "icons": {
     "16": "imgs/Logo.png",
     "32": "imgs/Logo.png",
