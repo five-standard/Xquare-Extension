@@ -42,13 +42,13 @@ export const Apply = () => {
         }
       </ButtonBox>
     </Box>
-    <Box>
+    {/* <Box>
       <h1>주말급식 신청</h1>
       <ButtonBox>
         <Button text="신청" />
         <Button text="미신청" id="selected" />
       </ButtonBox>
-    </Box>
+    </Box> */}
   </Wrapper>
 }
 
