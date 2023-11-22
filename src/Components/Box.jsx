@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Box = ({ children, height, style, action, rotate }) => {
-  return <Wrapper height={height} style={style} onClick={action} rotate={rotate}>
+export const Box = ({ children, height, style, action, rotate, id }) => {
+  return <Wrapper height={height} style={style} onClick={action} rotate={rotate} id={id}>
     {children}
   </Wrapper>
 }
