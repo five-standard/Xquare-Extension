@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Cookie } from "../Utils/Utilities";
 
 export const Nav = () => {
@@ -15,6 +15,27 @@ export const Nav = () => {
       setCnt(Number(e.target.className.split(" ")[3]))
     }
   }
+
+  const handleKeydown = (e) => {
+    if(isAccessToken) {
+      if(e.code === "ArrowLeft" && cnt > 1) {
+        setCnt(cnt => --cnt)
+      } else if(e.code === "ArrowRight" && cnt < 4) {
+        setCnt(cnt => ++cnt);
+      }
+    }
+  }
+
+  useEffect(() => {
+    navigate(`/${sections[cnt-1]}`)
+  }, [cnt]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeydown);
+    return (() => {
+      document.removeEventListener('keydown', handleKeydown);
+    })
+  })
 
   return <Wrapper>
     <Points>
