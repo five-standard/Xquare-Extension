@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
-import { Cookie, Dates, messages, days } from "../../Utils/Utilities";
+import { Cookie, Dates, messages, days, today } from "../../Utils/Utilities";
 import { MapBox } from "../../Components/MapBox";
 import { getTodayMeals } from "../../Api/Meal";
 import { getUserSimple } from "../../Api/User";
@@ -29,7 +29,6 @@ export const Home = () => {
   const accessToken = Cookie.get("accessToken");
   const update = useRecoilValue(updator);
   const navigate = useNavigate();
-  const today = `${Dates.getFullYear()}-${Dates.getMonth()+1}-${Dates.getDate()}`
   const mealType = {
     "아침": "breakfast",
     "점심": "lunch",
@@ -38,7 +37,7 @@ export const Home = () => {
 
   useEffect(() => {
     getTodayMeals().then(res => { // 급식정보 불러오기
-      Object.keys(meals).map(key => {
+      res.data && Object.keys(meals).map(key => {
         setMeals(meals => { return {...meals, [key]: res.data[key]} })
       })
     }).catch(() => toast.error(<b>{messages.meal}</b>))
@@ -50,17 +49,18 @@ export const Home = () => {
   }, [update])
 
   const handleLogout = () => {
-    postLogout().then(() => {
-      Cookie.remove("accessToken");
-      Cookie.remove("refreshToken");
-      navigate("/");
-    }).catch(() => toast.error(<b>{messages.logout}</b>))
+    Cookie.set("accessToken", "abcd");
+    // postLogout().then(() => {
+    //   Cookie.remove("accessToken");
+    //   Cookie.remove("refreshToken");
+    //   navigate("/");
+    // }).catch(() => toast.error(<b>{messages.logout}</b>))
   }
 
   return <_.Wrapper>
     <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
       <_.ProfileBox>
-        <img src={accessToken && user.profile_file_name !== "" ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
+        <img src={accessToken && user.profile_file_name ? user.profile_file_name : "/imgs/svg/Profile.svg"} width={40} height={40} style={{"border-radius": "50px"}}/>
         {
           accessToken
           ? <_.DataBox>

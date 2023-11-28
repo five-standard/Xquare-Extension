@@ -21,8 +21,8 @@ export const useRefresh = () => {
           Cookie.set("accessToken", res.data.access_token);
           Cookie.set("refreshToken", res.data.refresh_token);
           setUpdate(update => !update);
-          return;
-        })
+        }).catch(() => {});
+        return err.response;
       } else {
         return Promise.reject(err);
       }
