@@ -21,5 +21,4 @@ const Content = styled.div`
     width: 100%;
   }
   & > div#class { flex-direction: column; }
-  & > h2 { width: 80%; }
 `
