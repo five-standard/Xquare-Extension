@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Box = ({ children, height, style, action, rotate, id }) => {
-  return <Wrapper height={height} style={style} onClick={action} rotate={rotate} id={id}>
+export const Box = ({ children, height, style, action, rotate, cursor, id }) => {
+  return <Wrapper height={height} style={style} onClick={action} rotate={rotate} cursor={cursor} id={id}>
     {children}
   </Wrapper>
 }
@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   padding: 10px;
   border-radius: 15px;
   background: white;
+  cursor: ${({cursor}) => cursor ? "pointer": "default"};
   box-sizing: border-box;
   height: ${({height}) => height};
   & h1 { // 제목

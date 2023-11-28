@@ -45,7 +45,7 @@ export const TimeTable = () => {
         }
       </_.SubjDataBox>
     </Box>
-    <Box height="70px" style={{"cursor": "pointer", "padding": "0 20px 0 20px"}} action={handleOpen}>
+    <Box height="70px" style={{"padding": "0 20px 0 20px"}} action={handleOpen} cursor>
       <h1 style={{"font-size": "20px", "color": "#5C5960"}}>학사일정</h1>
       <img src="/imgs/svg/Url.svg" width={20} height={20} />
     </Box>
