@@ -49,12 +49,11 @@ export const Home = () => {
   }, [update])
 
   const handleLogout = () => {
-    Cookie.set("accessToken", "abcd");
-    // postLogout().then(() => {
-    //   Cookie.remove("accessToken");
-    //   Cookie.remove("refreshToken");
-    //   navigate("/");
-    // }).catch(() => toast.error(<b>{messages.logout}</b>))
+    postLogout().then(() => { // 로그아웃 요청하기
+      Cookie.remove("accessToken");
+      Cookie.remove("refreshToken");
+      navigate("/");
+    }).catch(() => toast.error(<b>{messages.logout}</b>))
   }
 
   return <_.Wrapper>
