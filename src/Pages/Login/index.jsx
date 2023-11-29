@@ -5,6 +5,7 @@ import { Cookie, messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { postLogin } from "../../Api/Auth";
+import { Back } from "../../Components/Back";
 import * as _ from "./style";
 
 export const Login = () => {
@@ -31,7 +32,7 @@ export const Login = () => {
   }
 
   return <_.Wrapper>
-    <_.Back src="/imgs/svg/Back.svg" alt="" onClick={() => navigate("/")} />
+    <Back to="/" />
     <_.InputBox>
       <Input placeholder="아이디" value={data.account_id} action={handleChange} id="account_id" />
       <Input placeholder="비밀번호" value={data.password} action={handleChange} id="password" type="password" />
