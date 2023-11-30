@@ -6,6 +6,7 @@ import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
 import { Box } from "../../components/Box";
+import { Icon } from "@iconify/react";
 import * as _ from "./style";
 
 export const TimeTable = () => {
@@ -47,7 +48,7 @@ export const TimeTable = () => {
     </Box>
     <Box height="70px" style={{"padding": "0 20px 0 20px"}} action={handleOpen} cursor>
       <h1 style={{"font-size": "20px", "color": "#5C5960"}}>학사일정</h1>
-      <img src="/imgs/svg/Url.svg" width={20} height={20} />
+      <Icon icon="ph:link-bold" color="#5C5960" width="25px" />
     </Box>
   </_.Wrapper>
 }
