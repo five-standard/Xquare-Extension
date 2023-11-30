@@ -78,10 +78,10 @@ export const Home = () => {
         {
           Object.entries(mealType).map(([k, v]) => {
             return <MapBox style={{"flex-direction": "column"}}>
-              <div id="title">
+              <_.TitleBox>
                 <h1>{k}</h1>
                 {meals[`${v}_kcal`] && <h3>{meals[`${v}_kcal`]}</h3> }
-              </div>
+              </_.TitleBox>
               <h2>
               {
                 meals[v]

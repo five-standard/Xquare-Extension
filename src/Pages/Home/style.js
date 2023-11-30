@@ -23,11 +23,6 @@ export const MealBox = styled.div`
   background: #F9F7FA;
   border-radius: 15px;
   box-sizing: border-box;
-  & > div#title {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
   & > h2 { width: 80%; }
 `
 
@@ -61,4 +56,10 @@ export const LogoutBox = styled.div`
   color: #FF7575;
   font-size: 12px;
   font-weight: 500;
+`
+
+export const TitleBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `
