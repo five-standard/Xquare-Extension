@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Cookie, messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
-import { postLogin } from "../../Api/Auth";
 import { Back } from "../../Components/Back";
+import { postLogin } from "../../Api/Auth";
 import * as _ from "./style";
 
 export const Login = () => {
@@ -22,8 +22,8 @@ export const Login = () => {
 
   const handleSubmit = () => {
     postLogin(data).then(res => {
-      Cookie.set("accessToken", res.data.access_token, {path:"/"});
-      Cookie.set("refreshToken", res.data.refresh_token, {path:"/"});
+      Cookie.set("accessToken", res.data.access_token);
+      Cookie.set("refreshToken", res.data.refresh_token);
       navigate("/");
       toast.success(<b>{messages.login_success} ({data.account_id})</b>);
     }).catch(e => {
