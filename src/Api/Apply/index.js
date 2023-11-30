@@ -9,5 +9,9 @@ export const getStayStatus = async () => { // 잔류 정보 불러오기
 }
 
 export const postStayStatus = async (state) => { // 잔류 상태 변경 요청 보내기
-  return await instance.put(`/applications/stay`, { status: state });
+  return await instance.put("/applications/stay", { status: state });
+}
+
+export const getPicnic = async () => { // 외출 여부 불러오기
+  return await instance.get("pick/applications/picnic");
 }
