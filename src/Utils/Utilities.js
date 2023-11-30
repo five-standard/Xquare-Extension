@@ -18,5 +18,7 @@ export const messages = {
   logout: "로그아웃하는 데 실패했습니다.",
   login_success: "로그인되었습니다.",
   login_fail: "로그인하는 데 실패했습니다.",
+  stay_codes: "잔류 코드를 불러오는 데 실패했습니다.",
+  stay_status: "잔류 상태를 불러오는 데 실패했습니다.",
   error: "다시 시도해 주세요.",
 }
