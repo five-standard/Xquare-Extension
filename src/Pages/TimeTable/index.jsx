@@ -5,7 +5,7 @@ import { Dates, messages, day } from "../../Utils/Utilities";
 import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
-import { Box } from "../../components/Box";
+import { Box } from "../../Components/Box";
 import { Icon } from "@iconify/react";
 import * as _ from "./style";
 

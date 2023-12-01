@@ -4,7 +4,7 @@ import { getPicnic, getStayCodes, getStayStatus, postStayStatus } from "../../Ap
 import { Button } from "../../Components/Button"
 import { messages } from "../../Utils/Utilities"
 import { MapBox } from "../../Components/MapBox"
-import { Box } from "../../components/Box"
+import { Box } from "../../Components/Box"
 import * as _ from "./style";
 
 export const Apply = () => {

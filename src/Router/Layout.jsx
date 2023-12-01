@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useRefresh } from "../hooks/useRefresh";
+import { useRefresh } from "../Hooks/useRefresh";
 import { Nav } from "../Components/Nav";
 
 export const Layout = () => {

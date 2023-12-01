@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Dates, day, messages } from "../../Utils/Utilities";
 import { getDirectors, getNotices } from "../../Api/All";
 import { MapBox } from "../../Components/MapBox";
-import { Box } from "../../components/Box";
+import { Box } from "../../Components/Box";
 import * as _ from "./style";
 
 export const All = () => {
@@ -15,6 +15,9 @@ export const All = () => {
     getDirectors().then(res => { // 자습감독 불러오기
       res.data && setDirector(res.data.self_study_list[Dates.getDate()-1].teacher);
     }).catch(() => toast.error(<b>{messages.director}</b>))
+    getNotices().then(res => {
+      console.log(res);
+    })
   }, [])
 
   const handleClick = (e) => {

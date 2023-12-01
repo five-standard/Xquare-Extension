@@ -9,7 +9,7 @@ import { getTodayMeals } from "../../Api/Meal";
 import { getUserSimple } from "../../Api/User";
 import { postLogout } from "../../Api/Auth";
 import { updator } from "../../Utils/Atoms";
-import { Box } from "../../components/Box";
+import { Box } from "../../Components/Box";
 import * as _ from "./style";
 
 export const Home = () => {
