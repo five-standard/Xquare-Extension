@@ -32,15 +32,15 @@ export const All = () => {
   return <_.Wrapper>
     <_.Row>
       <div>
-        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/points" cursor>
+        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/points" $cursor>
           <h1 style={{fontSize: "20px", color: "#5C5960"}}>상벌점 내역</h1>
         </Box>
-        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/all" cursor>
+        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/all" $cursor>
           <h1 style={{fontSize: "20px", color: "#5C5960"}}>개발중...</h1>
         </Box>
       </div>
       <div>
-        <Box style={{width: "100%", minHeight: "200px", justifyContent: "start"}} rotate>
+        <Box style={{width: "100%", minHeight: "200px", justifyContent: "start"}} $rotate>
           <h1 style={{alignSelf: "start"}}>{day}요일 자습감독</h1>
           {
             director
@@ -59,7 +59,7 @@ export const All = () => {
         </Box>
       </div>
     </_.Row>
-    <Box height="100%" rotate>
+    <Box height="100%" $rotate>
       {/* <_.top>
 
       </_.top> */}
