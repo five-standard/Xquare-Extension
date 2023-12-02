@@ -10,8 +10,8 @@ export const App = () => {
   return <Wrapper>
     <RecoilRoot>
       <ToastContainer position="bottom-center" autoClose={1500} />
-      <GlobalStyle />
       <GlobalFont />
+      <GlobalStyle />
       <Router />
     </RecoilRoot>
   </Wrapper>
