@@ -7,25 +7,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `
 
-export const DataBox = styled.div`
-  gap: 3px;
-  display: flex;
-  flex-direction: column;
-`
-
-export const MealBox = styled.div`
-  gap: 5px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px;
-  min-height: 85px;
-  background: #F9F7FA;
-  border-radius: 15px;
-  box-sizing: border-box;
-  & > h2 { width: 80%; }
-`
-
 export const MealDataBox = styled.div`
   gap: 10px;
   display: flex;
@@ -44,6 +25,12 @@ export const ProfileBox = styled.div`
   align-items: center;
 `
 
+export const LoginBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+`
+
 export const LogoutBox = styled.div`
   display: flex;
   align-items: center;
@@ -53,9 +40,6 @@ export const LogoutBox = styled.div`
   background: #F9F7FA;
   box-sizing: border-box;
   padding: 10px 15px 10px 15px;
-  color: #FF7575;
-  font-size: 12px;
-  font-weight: 500;
 `
 
 export const TitleBox = styled.div`

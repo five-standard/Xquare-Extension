@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
-import { Cookie, Dates, messages, days, today } from "../../Utils/Utilities";
+import { Cookie, Dates, messages, today } from "../../Utils/Utilities";
+import { ProfileBox } from "../../Components/ProfileBox";
+import { dayType, mealType } from "../../Utils/Types";
 import Profile from "../../Assets/imgs/Profile.svg";
 import { MapBox } from "../../Components/MapBox";
 import { getTodayMeals } from "../../Api/Meal";
@@ -30,11 +32,6 @@ export const Home = () => {
   const accessToken = Cookie.get("accessToken");
   const update = useRecoilValue(updator);
   const navigate = useNavigate();
-  const mealType = {
-    "아침": "breakfast",
-    "점심": "lunch",
-    "저녁": "dinner"
-  }
 
   useEffect(() => {
     getTodayMeals().then(res => { // 급식정보 불러오기
@@ -58,38 +55,59 @@ export const Home = () => {
   }
 
   return <_.Wrapper>
-    <Box height="70px" style={{"padding-right": "20px", "cursor": `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
+    <Box height="70px" style={{paddingRight: "20px", cursor: `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
       <_.ProfileBox>
-        <img src={accessToken && user.profile_file_name ? user.profile_file_name : Profile} width={40} height={40} style={{"border-radius": "50px"}}/>
         {
           accessToken
-          ? <_.DataBox>
-            <h1>{user.name}</h1>
-            <h2>상점 {user.good_point}점 벌점 {user.bad_point}점</h2>
-          </_.DataBox> 
-          : <h1 style={{"font-size": "20px", "color": "#5C5960"}}>로그인하세요</h1>
+          ? <>
+            <ProfileBox 
+              profile={{
+                img: user.profile_file_name && user.profile_file_name,
+                name: user.name,
+                sub: `상점 ${user.good_point}점 벌점 ${user.bad_point}점`,
+              }}
+            />
+          </>
+          : <>
+            <_.LoginBox>
+              <img src={Profile} width={40} height={40} style={{borderRadius: "50px"}} alt="" />
+              <h1 style={{fontSize: "20px", color: "#5C5960"}}>로그인하세요</h1>
+            </_.LoginBox>
+          </>
         }
       </_.ProfileBox>
-      { accessToken && <_.LogoutBox onClick={handleLogout}>로그아웃</_.LogoutBox>}
+      { 
+        accessToken && <>
+          <_.LogoutBox onClick={handleLogout}>
+            <h2 style={{color: "#FF7575"}}>로그아웃</h2>
+          </_.LogoutBox>
+        </>
+      }
     </Box>
-    <Box style={{"flex-direction": "column"}}>
-      <h1 style={{"align-self": "flex-start"}}>{today} ({days[Dates.getDay()]})</h1>
+    <Box style={{flexDirection: "column"}}>
+      <h1 style={{alignSelf: "start"}}>{today} ({dayType[Dates.getDay()]})</h1>
       <_.MealDataBox>
         {
           Object.entries(mealType).map(([k, v]) => {
-            return <MapBox style={{"flex-direction": "column"}}>
-              <_.TitleBox>
-                <h1>{k}</h1>
-                {meals[`${v}_kcal`] && <h3>{meals[`${v}_kcal`]}</h3> }
-              </_.TitleBox>
-              <h2>
-              {
-                meals[v]
-                ? meals[v].map((i, k) => `${i}${k !== meals[v].length-1 ? ", " : ""}`)
-                : "등록된 급식이 없습니다"
-              }
-              </h2>
-            </MapBox>
+            return <>
+              <MapBox style={{flexDirection: "column"}}>
+                <_.TitleBox>
+                  <h1>{k}</h1>
+                  {
+                    meals[`${v}_kcal`] && <>
+                      <h3>{meals[`${v}_kcal`]}</h3>
+                    </>
+                  }
+                </_.TitleBox>
+                <h2 style={{width: "90%"}}>
+                  {
+                    meals[v]
+                    ? meals[v].map((i, k) => `${i}${k !== meals[v].length-1 ? ", " : ""}`)
+                    : "등록된 급식이 없습니다"
+                  }
+                </h2>
+              </MapBox>
+            </>
           })
         }
       </_.MealDataBox>
