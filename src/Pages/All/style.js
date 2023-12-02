@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: calc(100% - 50px);
 `
 
 export const Row = styled.div`
@@ -17,6 +18,5 @@ export const Row = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 200px;
   }
 `
