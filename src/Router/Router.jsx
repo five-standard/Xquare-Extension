@@ -3,7 +3,6 @@ import { TimeTable } from "../Pages/TimeTable";
 import { Apply } from "../Pages/Apply";
 import { Login } from "../Pages/Login";
 import { Home } from "../Pages/Home";
-import { Dev } from "../Pages/Dev";
 import { All } from "../Pages/All";
 import { Layout } from "./Layout";
 import { Points } from "../Pages/Points";
