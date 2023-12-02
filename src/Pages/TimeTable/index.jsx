@@ -17,7 +17,7 @@ export const TimeTable = () => {
   useEffect(() => {
     getTimeTable().then(res => {
       const result = (res.data.week_timetable.filter(i => i.week_day === today))[0];
-      setTimeTable(result.day_timetable);
+      result && setTimeTable(result.day_timetable);
     }).catch(() => toast.error(<b>{messages.timetable}</b>))
   }, [update])
 
