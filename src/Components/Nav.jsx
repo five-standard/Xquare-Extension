@@ -41,7 +41,7 @@ export const Nav = () => {
     <PointBox>
       {
         sections.map((i, j) => {
-          return <Point $token={isAccessToken} className={`${i} ${j+1}`} id={cnt===j+1 && "selected"} onClick={setNav} />
+          return <Point $token={isAccessToken} className={`${i} ${j+1}`} key={j} id={cnt===j+1 ? "selected" : ""} onClick={setNav} />
         })
       }
     </PointBox>

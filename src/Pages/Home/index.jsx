@@ -84,12 +84,12 @@ export const Home = () => {
         </>
       }
     </Box>
-    <Box style={{flexDirection: "column"}}>
+    <Box $rotate>
       <h1 style={{alignSelf: "start"}}>{today} ({dayType[Dates.getDay()]})</h1>
       <_.MealDataBox>
         {
-          Object.entries(mealType).map(([k, v]) => {
-            return <>
+          Object.entries(mealType).map(([k, v], i) => {
+            return <div key={i}>
               <MapBox style={{flexDirection: "column"}}>
                 <_.TitleBox>
                   <h1>{k}</h1>
@@ -107,7 +107,7 @@ export const Home = () => {
                   }
                 </h2>
               </MapBox>
-            </>
+            </div>
           })
         }
       </_.MealDataBox>
