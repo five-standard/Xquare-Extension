@@ -4,6 +4,7 @@ import { getPicnic, getStayCodes, getStayStatus, postStayStatus } from "../../Ap
 import { Button } from "../../Components/Button"
 import { messages } from "../../Utils/Utilities"
 import { MapBox } from "../../Components/MapBox"
+import { picnicType } from "../../Utils/Types"
 import { Box } from "../../Components/Box"
 import * as _ from "./style";
 
@@ -11,12 +12,6 @@ export const Apply = () => {
   const [codes, setCodes] = useState(undefined);
   const [state, setState] = useState(undefined);
   const [picnic, setPicnic] = useState(undefined);
-  const words = {
-    "start_time": "시작 시간",
-    "end_time": "종료 시간",
-    "reason": "사유",
-    "teacher_name": "확인 교사",
-  }
 
   useEffect(() => {
     getStayCodes().then(res => {
@@ -36,7 +31,7 @@ export const Apply = () => {
       setState(name);
       postStayStatus(name).then(() => {
         toast.success(`잔류 신청이 ${e.target.innerText}로 변경됬습니다.`)
-      }).catch(() => {})
+      }).catch(() => toast.error(<b>{messages.stay_status}</b>))
     }
   }
 
@@ -46,7 +41,7 @@ export const Apply = () => {
       <_.ButtonBox>
         {
           codes && codes.map(i => {
-            return <Button text={i.value.replaceAll(" ", "")} id={i.name === state && "selected"} className={i.name} action={handleClick}/>
+            return <Button text={i.value.replaceAll(" ", "")} id={i.name === state && "selected"} className={i.name} action={handleClick} />
           })
         }
       </_.ButtonBox>
@@ -54,15 +49,15 @@ export const Apply = () => {
     {
       picnic && <>
         <Box rotate>
-          <h1 style={{"align-self": "start"}}>외출 안내</h1>
+          <h1 style={{alignSelf: "start"}}>외출 안내</h1>
           {
             Object.entries(picnic).map((i) => {
-              if(words[i[0]]) {
-                return <MapBox style={{"justify-content": "space-between"}}>
-                <h1>{words[i[0]]}</h1>
+              if(picnicType[i[0]]) {
+                return <MapBox style={{justifyContent: "space-between"}}>
+                <h1>{picnicType[i[0]]}</h1>
                 <h2>{i[1]}</h2>
               </MapBox>
-              }  
+              }
             })
           }
         </Box>
