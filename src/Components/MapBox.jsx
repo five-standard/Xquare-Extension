@@ -1,12 +1,12 @@
 import { styled } from "styled-components"
 
 export const MapBox = ({ children, style }) => {
-  return <Content style={style}>
+  return <Component style={style}>
     {children}
-  </Content>
+  </Component>
 }
 
-const Content = styled.div`
+const Component = styled.div`
   gap: 5px;
   display: flex;
   justify-content: space-between;

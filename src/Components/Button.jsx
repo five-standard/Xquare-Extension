@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Button = ({ text, style, id, className, action }) => {
-  return <Wrapper style={style} id={id} onClick={action} className={className} >
+  return <Component style={style} id={id} onClick={action} className={className} >
     {text}
-  </Wrapper>
+  </Component>
 }
 
-const Wrapper = styled.div`
+const Component = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
