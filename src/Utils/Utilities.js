@@ -7,7 +7,7 @@ export const Dates = new Date();
 
 export const day = dayType[Dates.getDay()];
 
-export const today = `${Dates.getFullYear()}-${Dates.getMonth() + 1}-${Dates.getDate()}`
+export const today = `${Dates.getFullYear()}-${String(Dates.getMonth() + 1).padStart(2, "0")}-${String(Dates.getDate()).padStart(2, "0")}`
 
 export const messages = {
   user: "유저 정보를 불러오는 데 실패했습니다.",
@@ -19,6 +19,7 @@ export const messages = {
   login_fail: "로그인하는 데 실패했습니다.",
   stay_codes: "잔류 코드를 불러오는 데 실패했습니다.",
   stay_status: "잔류 상태를 불러오는 데 실패했습니다.",
+  stay_status_change: "잔류 상태를 변경하는 데 실패했습니다.",
   feeds: "최근 공지사항을 불러오는 데 실패했습니다.",
   error: "다시 시도해 주세요.",
 }

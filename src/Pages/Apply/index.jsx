@@ -31,7 +31,7 @@ export const Apply = () => {
       setState(name);
       postStayStatus(name).then(() => {
         toast.success(`잔류 신청이 ${e.target.innerText}로 변경됬습니다.`)
-      }).catch(() => toast.error(<b>{messages.stay_status}</b>))
+      }).catch(() => toast.error(<b>{messages.stay_status_change}</b>))
     }
   }
 
@@ -40,23 +40,25 @@ export const Apply = () => {
       <h1>잔류 신청</h1>
       <_.ButtonBox>
         {
-          codes && codes.map(i => {
-            return <Button text={i.value.replaceAll(" ", "")} id={i.name === state && "selected"} className={i.name} action={handleClick} />
+          codes && codes.map((i, j) => {
+            return <Button text={i.value.replaceAll(" ", "")} key={j} id={i.name === state ? "selected" : ""} className={i.name} action={handleClick} />
           })
         }
       </_.ButtonBox>
     </Box>
     {
       picnic && <>
-        <Box rotate>
+        <Box $rotate>
           <h1 style={{alignSelf: "start"}}>외출 안내</h1>
           {
             Object.entries(picnic).map((i) => {
               if(picnicType[i[0]]) {
-                return <MapBox style={{justifyContent: "space-between"}}>
-                <h1>{picnicType[i[0]]}</h1>
-                <h2>{i[1]}</h2>
-              </MapBox>
+                return <>
+                  <MapBox style={{justifyContent: "space-between"}}>
+                    <h1>{picnicType[i[0]]}</h1>
+                    <h2>{i[1]}</h2>
+                  </MapBox>
+                </>
               }
             })
           }
