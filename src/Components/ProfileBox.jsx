@@ -5,8 +5,8 @@ export const ProfileBox = ({ profile }) => {
   return <Component>
     <ImgElement src={profile.img ? profile.img : Profile} alt="" />
     <TextBox>
-      <h1>{profile.name}</h1>
-      <h2>{profile.sub}</h2>
+      <h1>{profile.name ? profile.name : "아무개"}</h1>
+      <h2>{profile.sub ? profile.sub : "-"}</h2>
     </TextBox>
   </Component>
 }
