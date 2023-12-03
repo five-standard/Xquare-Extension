@@ -11,4 +11,10 @@ export const picnicType = {
   "teacher_name": "확인 교사",
 }
 
+export const pointType = {
+  "all": "",
+  "good": "GOODPOINT",
+  "bad": "BADPOINT"
+}
+
 export const dayType = ["일", "월", "화", "수", "목", "금", "토"];
