@@ -1,13 +1,12 @@
-import { useNavigate } from "react-router-dom"
-import { styled } from "styled-components"
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Cookie } from "../Utils/Utilities";
+import { styled } from "styled-components";
 
 export const Nav = () => {
   const navigate = useNavigate();
   const [cnt, setCnt] = useState(1);
   const sections = ["", "timetable", "apply", "all"];
-  const isAccessToken = Cookie.get("accessToken") !== undefined;
+  const isAccessToken = localStorage.getItem("accessToken") !== undefined;
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeydown);

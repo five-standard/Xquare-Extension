@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { Cookie, messages } from "../../Utils/Utilities";
+import { messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
 import { Back } from "../../Components/Back";
@@ -22,8 +22,8 @@ export const Login = () => {
 
   const handleSubmit = () => {
     postLogin(data).then(res => { // 로그인 요청하기
-      Cookie.set("accessToken", res.data.access_token);
-      Cookie.set("refreshToken", res.data.refresh_token);
+      localStorage.setItem("accessToken", res.data.access_token);
+      localStorage.setItem("refreshToken", res.data.refresh_token);
       navigate("/");
       toast.success(<b>{messages.login_success} ({data.account_id})</b>);
     }).catch(e => toast.error(<b>{messages.login_fail} ({e.response.data.error_message.split(".")[0]})</b>))

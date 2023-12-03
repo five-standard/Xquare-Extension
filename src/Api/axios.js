@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Cookie } from '../Utils/Utilities';
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_KEY,
@@ -9,7 +8,7 @@ export const instance = axios.create({
 instance.interceptors.request.use(
   res => { 
     if(res.headers["Refresh-Token"] === undefined) {
-      const accessToken = Cookie.get("accessToken");
+      const accessToken = localStorage.getItem("accessToken");
       res.headers.authorization = accessToken && `Bearer ${accessToken}`;
     }
     return res;

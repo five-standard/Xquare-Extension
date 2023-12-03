@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
-import { Cookie, Dates, messages, today } from "../../Utils/Utilities";
+import { Dates, messages, today } from "../../Utils/Utilities";
 import { ProfileBox } from "../../Components/ProfileBox";
 import { dayType, mealType } from "../../Utils/Types";
 import Profile from "../../Assets/imgs/Profile.svg";
@@ -29,7 +29,7 @@ export const Home = () => {
     bad_point: 0,
     profile_file_name: undefined
   })
-  const accessToken = Cookie.get("accessToken");
+  const accessToken = localStorage.getItem("accessToken");
   const update = useRecoilValue(updator);
   const navigate = useNavigate();
 
@@ -48,8 +48,8 @@ export const Home = () => {
 
   const handleLogout = () => {
     postLogout().then(() => { // 로그아웃 요청하기
-      Cookie.remove("accessToken");
-      Cookie.remove("refreshToken");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
       navigate("/");
     }).catch(() => toast.error(<b>{messages.logout}</b>))
   }

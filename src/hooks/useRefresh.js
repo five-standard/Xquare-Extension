@@ -1,9 +1,8 @@
 import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
-import { updator } from "../Utils/Atoms";
 import { postRefresh } from "../Api/Auth";
+import { updator } from "../Utils/Atoms";
 import { instance } from "../Api/axios";
-import { Cookie } from "../Utils/Utilities";
 
 export const useRefresh = () => {
   const setUpdate = useSetRecoilState(updator);
@@ -16,10 +15,10 @@ export const useRefresh = () => {
         response: { status } 
       } = err;
       if(status === 403) {
-        const refreshToken = Cookie.get("refreshToken");
+        const refreshToken = localStorage.getItem("refreshToken");
         postRefresh(refreshToken).then(res => {
-          Cookie.set("accessToken", res.data.access_token);
-          Cookie.set("refreshToken", res.data.refresh_token);
+          localStorage.setItem("accessToken", res.data.access_token);
+          localStorage.setItem("refreshToken", res.data.refresh_token);
           setUpdate(update => !update);
         }).catch(() => {});
         return err.response;

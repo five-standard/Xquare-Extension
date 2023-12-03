@@ -1,7 +1,4 @@
-import { Cookies } from "react-cookie";
 import { dayType } from "./Types";
-
-export const Cookie = new Cookies();
 
 export const Dates = new Date();
 
