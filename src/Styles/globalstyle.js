@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
     font-weight: 100;
     font-family: "Noto Sans KR";
+    &::-webkit-scrollbar { display: none; }
   }
 
   h1 { // 제목
