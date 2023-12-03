@@ -6,7 +6,7 @@ export const Nav = () => {
   const navigate = useNavigate();
   const [cnt, setCnt] = useState(1);
   const sections = ["", "timetable", "apply", "all"];
-  const isAccessToken = localStorage.getItem("accessToken") !== undefined;
+  const isAccessToken = localStorage.getItem("accessToken") !== null;
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeydown);
