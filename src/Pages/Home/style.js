@@ -16,7 +16,6 @@ export const MealDataBox = styled.div`
   overflow-y: auto;
   max-height: 250px;
   border-radius: 15px;
-  &::-webkit-scrollbar { display: none; }
 `
 
 export const ProfileBox = styled.div`
