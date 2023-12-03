@@ -59,29 +59,23 @@ export const Home = () => {
       <_.ProfileBox>
         {
           accessToken
-          ? <>
-            <ProfileBox 
-              profile={{
-                img: user.profile_file_name && user.profile_file_name,
-                name: user.name,
-                sub: `상점 ${user.good_point}점 벌점 ${user.bad_point}점`,
-              }}
-            />
-          </>
-          : <>
-            <_.LoginBox>
-              <img src={Profile} width={40} height={40} style={{borderRadius: "50px"}} alt="" />
-              <h1 style={{fontSize: "20px", color: "#5C5960"}}>로그인하세요</h1>
-            </_.LoginBox>
-          </>
+          ? <ProfileBox 
+            profile={{
+              img: user.profile_file_name && user.profile_file_name,
+              name: user.name,
+              sub: `상점 ${user.good_point}점 벌점 ${user.bad_point}점`,
+            }}
+          />
+          : <_.LoginBox>
+            <img src={Profile} width={40} height={40} style={{borderRadius: "50px"}} alt="" />
+            <h1 style={{fontSize: "20px", color: "#5C5960"}}>로그인하세요</h1>
+          </_.LoginBox>
         }
       </_.ProfileBox>
       { 
-        accessToken && <>
-          <_.LogoutBox onClick={handleLogout}>
-            <h2 style={{color: "#FF7575"}}>로그아웃</h2>
-          </_.LogoutBox>
-        </>
+        accessToken && <_.LogoutBox onClick={handleLogout}>
+          <h2 style={{color: "#FF7575"}}>로그아웃</h2>
+        </_.LogoutBox>
       }
     </Box>
     <Box $rotate>
@@ -89,25 +83,21 @@ export const Home = () => {
       <_.MealDataBox>
         {
           Object.entries(mealType).map(([k, v], i) => {
-            return <div key={i}>
-              <MapBox style={{flexDirection: "column"}}>
-                <_.TitleBox>
-                  <h1>{k}</h1>
-                  {
-                    meals[`${v}_kcal`] && <>
-                      <h3>{meals[`${v}_kcal`]}</h3>
-                    </>
-                  }
-                </_.TitleBox>
-                <h2 style={{width: "90%"}}>
-                  {
-                    meals[v]
-                    ? meals[v].map((i, k) => `${i}${k !== meals[v].length-1 ? ", " : ""}`)
-                    : "등록된 급식이 없습니다"
-                  }
-                </h2>
-              </MapBox>
-            </div>
+            return <MapBox style={{flexDirection: "column"}} key={i}>
+              <_.TitleBox>
+                <h1>{k}</h1>
+                {
+                  meals[`${v}_kcal`] && <h3>{meals[`${v}_kcal`]}</h3>
+                }
+              </_.TitleBox>
+              <h2 style={{width: "90%"}}>
+                {
+                  meals[v]
+                  ? meals[v].map((i, j) => `${i}${j !== meals[v].length-1 ? ", " : ""}`)
+                  : "등록된 급식이 없습니다"
+                }
+              </h2>
+            </MapBox>
           })
         }
       </_.MealDataBox>

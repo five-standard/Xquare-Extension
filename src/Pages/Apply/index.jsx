@@ -14,13 +14,13 @@ export const Apply = () => {
   const [picnic, setPicnic] = useState(undefined);
 
   useEffect(() => {
-    getStayCodes().then(res => {
+    getStayCodes().then(res => { // 잔류코드 가져오기
       res.data && setCodes(res.data.codes);
     }).catch(() => toast.error(<b>{messages.stay_codes}</b>))
-    getStayStatus().then(res => {
+    getStayStatus().then(res => { // 잔류상태 가져오기
       res.data && setState(res.data.status);
     }).catch(() => toast.error(<b>{messages.stay_status}</b>))
-    getPicnic().then(res => {
+    getPicnic().then(res => { // 외출정보 가져오기
       res.data && setPicnic(res.data);
     }).catch(() => {})
   }, [])
@@ -47,23 +47,19 @@ export const Apply = () => {
       </_.ButtonBox>
     </Box>
     {
-      picnic && <>
-        <Box $rotate>
-          <h1 style={{alignSelf: "start"}}>외출 안내</h1>
-          {
-            Object.entries(picnic).map((i) => {
-              if(picnicType[i[0]]) {
-                return <>
-                  <MapBox style={{justifyContent: "space-between"}}>
-                    <h1>{picnicType[i[0]]}</h1>
-                    <h2>{i[1]}</h2>
-                  </MapBox>
-                </>
-              }
-            })
-          }
-        </Box>
-      </>
+      picnic && <Box $rotate>
+        <h1 style={{alignSelf: "start"}}>외출 안내</h1>
+        {
+          Object.entries(picnic).map((i, j) => {
+            if(picnicType[i[0]]) {
+              return <MapBox style={{justifyContent: "space-between"}} key={j}>
+                <h1>{picnicType[i[0]]}</h1>
+                <h2>{i[1]}</h2>
+              </MapBox>
+            }
+          })
+        }
+      </Box>
     }
   </_.Wrapper>
 }
