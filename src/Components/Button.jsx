@@ -15,6 +15,7 @@ const Component = styled.div`
   background: #D9D9D9;
   box-sizing: border-box;
   padding: 10px 15px 10px 15px;
+  font-size: 12px;
   color: #8C8C8C;
   &#selected {
     background: #9550F9;
