@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-import { toast } from "react-toastify"
-import { getPicnic, getStayCodes, getStayStatus, postStayStatus } from "../../Api/Apply"
-import { Button } from "../../Components/Button"
-import { messages } from "../../Utils/Utilities"
-import { MapBox } from "../../Components/MapBox"
-import { picnicType } from "../../Utils/Types"
-import { Box } from "../../Components/Box"
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { getPicnic, getStayCodes, getStayStatus, postStayStatus } from "../../Api/Apply";
+import { Button } from "../../Components/Button";
+import { messages } from "../../Utils/Utilities";
+import { MapBox } from "../../Components/MapBox";
+import { picnicType } from "../../Utils/Types";
+import { Box } from "../../Components/Box";
 import * as _ from "./style";
 
 export const Apply = () => {
