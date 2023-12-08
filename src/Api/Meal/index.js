@@ -1,7 +1,6 @@
 import { instance } from "../axios"
+import { year_month } from "../../Utils/Utilities";
 
-export const getTodayMeals = async () => { // 오늘 급식 불러오기
-  const date = new Date();
-  const today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
-  return await instance.get(`/meals/${today}`);
+export const getTodayMeals = async (date) => { // 오늘 급식 불러오기
+  return await instance.get(`/meals/${year_month(date)}`);
 }
