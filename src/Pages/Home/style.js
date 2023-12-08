@@ -7,6 +7,25 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `
 
+export const MealTitleBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  & > div {
+    gap: 5px;
+    display: flex;
+    align-items: center;
+  }
+  & h4 {
+    cursor: pointer;
+    color: #5C5960;
+    font-size: 12px;
+  }
+  & svg {
+    cursor: pointer;
+  }
+`
+
 export const MealDataBox = styled.div`
   gap: 10px;
   display: flex;
