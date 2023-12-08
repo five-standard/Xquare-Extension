@@ -1,26 +1,21 @@
-import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
-import { Dates, messages, day } from "../../Utils/Utilities";
+import { Dates, messages, day, today } from "../../Utils/Utilities";
 import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
 import { Box } from "../../Components/Box";
 import { Icon as IconElement } from "@iconify/react";
 import * as _ from "./style";
+import { useQuery } from "react-query";
 
 export const TimeTable = () => {
-  const [timeTable, setTimeTable] = useState(undefined);
   const update = useRecoilValue(updator);
-  const today = Dates.getDay();
 
-  useEffect(() => {
-    getTimeTable().then(res => { // 시간표 가져오기
-      const result = (res.data.week_timetable.filter(i => i.week_day === today))[0];
-      result && setTimeTable(result.day_timetable);
-    }).catch(() => toast.error(<b>{messages.timetable}</b>))
-  }, [update])
-
+  const { data } = useQuery(["timeTable", update], getTimeTable, {
+    onError: () => toast.error(<b>{messages.timetable}</b>)
+  })
+  
   const handleOpen = () => {
     window.open("https://dsmhs.djsch.kr/scheduleH/list.do?m=0203&s=dsmhs");
   }
@@ -30,8 +25,8 @@ export const TimeTable = () => {
       <h1 style={{alignSelf: "start"}}>시간표 ({day})</h1>
       <_.SubjDataBox>
         {
-          timeTable
-          ? timeTable.map((i, j) => {
+          data
+          ? data.data.week_timetable.filter(i => i.date === today)[0].day_timetable.map((i, j) => {
             const begin = i.begin_time.split(":");
             const end = i.end_time.split(":");
             return <MapBox key={j}>

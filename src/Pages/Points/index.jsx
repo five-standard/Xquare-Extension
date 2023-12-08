@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import { PointBox } from "../../Components/PointBox";
 import { Button } from "../../Components/Button";
 import { pointType } from "../../Utils/Types";
 import { Back } from "../../Components/Back";
 import { getPoints } from "../../Api/All";
 import * as _ from "./style";
+import { messages } from "../../Utils/Utilities";
 
 export const Points = () => {
   const [item, setItem] = useState("all");
-  const [points, setPoints] = useState(undefined);
 
   const handleClick = (e) => {
     const { className } = e.target;
     setItem(className.split(" ")[2]);
   }
 
-  useEffect(() => {
-    getPoints(pointType[item]).then(res => { // 상벌점 가져오기
-      setPoints(res.data.point_histories);
-    })
-  }, [item]);
+  const { data } = useQuery(["points", item], () => getPoints(pointType[item]), {
+    onError: () => toast.error(<b>{messages.points}</b>)
+  })
 
   return <_.Wrapper>
     <Back />
@@ -30,7 +30,7 @@ export const Points = () => {
     </_.ButtonBox>
     <_.DataBox>
       {
-        points && points.map((i, j) => {
+        data && data.data.point_histories.map((i, j) => {
           return <PointBox 
             key={j}
             data={{
