@@ -12,3 +12,7 @@ export const getNotices = async () => { // 공지사항 불러오기
 export const getPoints = async (type) => {
   return await instance.get(`/points/history?type=${type}`);
 }
+
+export const getUpdates = async () => {
+  return await instance.get("https://my-json-server.typicode.com/five-standard/xquare-extension/updates");
+}

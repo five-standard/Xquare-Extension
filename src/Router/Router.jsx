@@ -6,6 +6,7 @@ import { Home } from "../Pages/Home";
 import { All } from "../Pages/All";
 import { Layout } from "./Layout";
 import { Points } from "../Pages/Points";
+import { Updates } from "../Pages/Updates";
 
 export const Router = () => {
   return <MemoryRouter>
@@ -18,6 +19,7 @@ export const Router = () => {
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/points" element={<Points />} />
+      <Route path="/updates" element={<Updates />} />
     </Routes>
   </MemoryRouter>
 }
