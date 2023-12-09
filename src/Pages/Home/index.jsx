@@ -56,11 +56,11 @@ export const Home = () => {
         {
           accessToken
           ? <ProfileBox 
-            profile={userData ? {
-              img: userData.data.profile_file_name && userData.data.profile_file_name,
-              name: userData.data.name,
-              sub: `상점 ${userData.data.good_point}점 벌점 ${userData.data.bad_point}점`,
-            } : {}}
+            profile={{
+              img: userData?.data.profile_file_name && userData?.data.profile_file_name,
+              name: userData?.data.name,
+              sub: `상점 ${userData?.data.good_point}점 벌점 ${userData?.data.bad_point}점`,
+            }}
           />
           : <_.LoginBox>
             <img src={Profile} width={40} height={40} style={{borderRadius: "50px"}} alt="" />
