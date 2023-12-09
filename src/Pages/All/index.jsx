@@ -7,24 +7,19 @@ import { ProfileBox } from "../../Components/ProfileBox";
 import { MapBox } from "../../Components/MapBox";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";
+import { useQuery } from "react-query";
 
 export const All = () => {
-  const [director, setDirector] = useState(undefined);
-  const [notice, setNotice] = useState(undefined);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getDirectors().then(res => { // 자습감독 불러오기
-      if(res.data) {
-        const data = res.data.self_study_list[Dates.getDate()-1].teacher;
-        const check = data.filter(i => i === "").length !== 5;
-        check && setDirector(data);
-      }
-    }).catch(() => toast.error(<b>{messages.director}</b>))
-    getNotices().then(res => { // 공지사항 불러오기
-      res.data && setNotice(res.data.feeds[0]);
-    }).catch(() => toast.error(<b>{messages.feeds}</b>))
-  }, [])
+  const { data: noticeData } = useQuery(["notices"], getNotices, {
+    onError: () => toast.error(<b>{messages.feeds}</b>)
+  })
+  const { data: directorData } = useQuery(["directors"], getDirectors, {
+    onError: () => toast.error(<b>{messages.director}</b>)
+  })
+
+  const director = directorData?.data.self_study_list[Dates.getDate()-1].teacher;
 
   const handleClick = (e) => {
     navigate(e.target.id);
@@ -36,16 +31,16 @@ export const All = () => {
         <Box height="50%" style={{width: "100%"}} action={handleClick} id="/points" $cursor>
           <h1 style={{fontSize: "20px", color: "#5C5960"}} id="/points">상벌점 내역</h1>
         </Box>
-        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/all" $cursor>
-          <h1 style={{fontSize: "20px", color: "#5C5960"}} id="/all">개발중...</h1>
+        <Box height="50%" style={{width: "100%"}} action={handleClick} id="/updates" $cursor>
+          <h1 style={{fontSize: "20px", color: "#5C5960"}} id="/updates">업데이트 내역</h1>
         </Box>
       </div>
       <div>
         <Box style={{width: "100%", minHeight: "200px", justifyContent: "start"}} $rotate>
           <h1 style={{alignSelf: "start"}}>{day}요일 자습감독</h1>
           {
-            director
-            ? director.map((i, j) => {
+            director?.filter(i => i === "").length !== 5
+            ? director?.map((i, j) => {
               if(i !== "") {
                 return <MapBox style={{height: "45px", justifyContent: "space-between"}} key={j}>
                   <h1>{j+1}층</h1>
@@ -62,16 +57,16 @@ export const All = () => {
       <_.TopBox>
         <ProfileBox 
           profile={{
-            img: notice && notice.profile,
-            name: notice && notice.name,
-            sub: notice && notice.created_at.split("T")[0],
+            img: noticeData && noticeData.data.feeds[0].profile,
+            name: noticeData && noticeData.data.feeds[0].name,
+            sub: noticeData && noticeData.data.feeds[0].created_at.split("T")[0],
           }}
         />
         <h1>최근 공지사항</h1>
       </_.TopBox>
       <_.DataBox>
         {
-          notice && <>{notice.content.split("\n").map((i, j) => { return <h1 key={j}>{i}</h1>})}</>
+          noticeData && noticeData.data.feeds[3].content
         }
       </_.DataBox>
     </Box>

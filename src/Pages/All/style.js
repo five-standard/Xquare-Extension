@@ -28,12 +28,13 @@ export const TopBox = styled.div`
   width: 100%;
 `
 
-export const DataBox = styled.div`
+export const DataBox = styled.h2`
   display: flex;
-  flex-direction: column;
   align-self: start;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
-  max-height: 105px;
+  height: 105px;
   overflow-y: scroll;
+  word-break: break-all;
+  white-space: pre-wrap;
 `
