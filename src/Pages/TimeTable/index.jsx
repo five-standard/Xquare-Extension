@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
-import { Dates, messages, day, today } from "../../Utils/Utilities";
+import { messages, day, today } from "../../Utils/Utilities";
 import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
@@ -25,7 +25,7 @@ export const TimeTable = () => {
       <h1 style={{alignSelf: "start"}}>시간표 ({day})</h1>
       <_.SubjDataBox>
         {
-          data
+          data?.data.week_timetable.filter(i => i.date === today)[0]
           ? data.data.week_timetable.filter(i => i.date === today)[0].day_timetable.map((i, j) => {
             const begin = i.begin_time.split(":");
             const end = i.end_time.split(":");

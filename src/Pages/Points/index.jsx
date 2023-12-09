@@ -30,7 +30,7 @@ export const Points = () => {
     </_.ButtonBox>
     <_.DataBox>
       {
-        data && data.data.point_histories.map((i, j) => {
+        data?.data.point_histories.map((i, j) => {
           return <PointBox 
             key={j}
             data={{
