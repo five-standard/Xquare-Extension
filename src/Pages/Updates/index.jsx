@@ -16,7 +16,7 @@ export const Updates = () => {
     <_.DataBox>
       {
         data
-        ? data.data.map((i, j) => {
+        ? data.data.reverse().map((i, j) => {
           return <Box key={j} $rotate>
             <_.Top>
               <h1>{i.ver}</h1>
