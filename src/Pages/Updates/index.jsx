@@ -8,7 +8,7 @@ import * as _ from "./style";
 
 export const Updates = () => {
   const { data } = useQuery(["updates"], getUpdates, {
-    onError: () => toast.error(<b>{messages.points}</b>)
+    onError: () => toast.error(<b>{messages.updates}</b>)
   })
 
   return <_.Wrapper>

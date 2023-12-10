@@ -22,6 +22,7 @@ export const messages = {
   stay_status: "잔류 상태를 불러오는 데 실패했습니다.",
   stay_status_change: "잔류 상태를 변경하는 데 실패했습니다.",
   feeds: "최근 공지사항을 불러오는 데 실패했습니다.",
-  points: "상/벌점을 불러오는 데 실패했습니다.",
+  points: "상/벌점 내역을 불러오는 데 실패했습니다.",
+  updates: "업데이트 내역을 불러오는 데 실패했습니다.",
   error: "다시 시도해 주세요.",
 }
