@@ -66,7 +66,7 @@ export const All = () => {
       </_.TopBox>
       <_.DataBox>
         {
-          noticeData && noticeData.data.feeds[3].content
+          noticeData && noticeData.data.feeds[0].content
         }
       </_.DataBox>
     </Box>
