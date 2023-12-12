@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useQuery } from "react-query";
 import { Dates, day, messages } from "../../Utils/Utilities";
 import { getDirectors, getNotices } from "../../Api/All";
 import { ProfileBox } from "../../Components/ProfileBox";
 import { MapBox } from "../../Components/MapBox";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";
-import { useQuery } from "react-query";
 
 export const All = () => {
   const navigate = useNavigate();

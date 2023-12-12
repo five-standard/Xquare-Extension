@@ -1,4 +1,5 @@
 import { toast } from "react-toastify";
+import { useQuery } from "react-query";
 import { getPicnic, getStayCodes, getStayStatus, postStayStatus } from "../../Api/Apply";
 import { Button } from "../../Components/Button";
 import { messages } from "../../Utils/Utilities";
@@ -6,7 +7,6 @@ import { MapBox } from "../../Components/MapBox";
 import { picnicType } from "../../Utils/Types";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";
-import { useQuery } from "react-query";
 
 export const Apply = () => {
 

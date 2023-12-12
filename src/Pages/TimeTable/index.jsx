@@ -1,13 +1,13 @@
 import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
+import { useQuery } from "react-query";
 import { messages, day, today } from "../../Utils/Utilities";
+import { Icon as IconElement } from "@iconify/react";
 import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
 import { Box } from "../../Components/Box";
-import { Icon as IconElement } from "@iconify/react";
 import * as _ from "./style";
-import { useQuery } from "react-query";
 
 export const TimeTable = () => {
   const update = useRecoilValue(updator);
