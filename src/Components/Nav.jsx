@@ -44,15 +44,22 @@ export const Nav = () => {
         })
       }
     </PointBox>
+    <VerBox>
+      v{process.env.REACT_APP_VER}
+    </VerBox>
   </Component>
 }
 
 const Component = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 99fr 1fr;
+  place-items: center center;
   padding-bottom: 10px;
+`
+
+const VerBox = styled.h3`
+
 `
 
 const PointBox = styled.div`
