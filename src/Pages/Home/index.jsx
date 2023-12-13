@@ -96,7 +96,7 @@ export const Home = () => {
               <h2 style={{width: "90%"}}>
                 {
                   data[v]
-                  ? data[v].map((i, j) => `${i}${j !== i.length-1 ? ", " : ""}`)
+                  ? data[v].map((i, j) => `${i}${j !== data[v].length-1 ? ", " : ""}`)
                   : "등록된 급식이 없습니다"
                 }
               </h2>
