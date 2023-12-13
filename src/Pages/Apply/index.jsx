@@ -16,7 +16,9 @@ export const Apply = () => {
   const { data: state, refetch } = useQuery(["state"], getStayStatus, {
     onError: () => toast.error(<b>{messages.user}</b>)
   })
-  const { data: picnic } = useQuery(["picnic"], getPicnic)
+  const { data: picnic } = useQuery(["picnic"], getPicnic, {
+    retry: false
+  })
 
   const handleClick = (e) => {
     const name = e.target.className.split(" ")[2];
