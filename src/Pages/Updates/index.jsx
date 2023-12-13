@@ -17,7 +17,7 @@ export const Updates = () => {
       {
         data
         ? data.data.reverse().map((i, j) => {
-          return <Box key={j} $rotate>
+          return <Box key={j} $rotate style={{border: `${i.ver === process.env.REACT_APP_VER ? "0.1px solid black" : ""}`}}>
             <_.Top>
               <h1>{i.ver}</h1>
               <h2>{i.date}</h2>
