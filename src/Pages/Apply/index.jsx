@@ -7,6 +7,7 @@ import { MapBox } from "../../Components/MapBox";
 import { picnicType } from "../../Utils/Types";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";
+import { PageButton } from "../../Components/PageButton";
 
 export const Apply = () => {
 
@@ -30,7 +31,7 @@ export const Apply = () => {
     }
   }
 
-  return <_.Wrapper>
+  return <>
     <Box>
       <h1>잔류 신청</h1>
       <_.ButtonBox>
@@ -41,7 +42,11 @@ export const Apply = () => {
         }
       </_.ButtonBox>
     </Box>
-    {
+    <_.PageButtonBox>
+      <PageButton to="/move" text="교실 이동" icon="mdi:exit-run" />
+      <PageButton to="/move" text="외출 신청" icon="mdi:bicycle" />
+    </_.PageButtonBox>
+    {/* {
       picnic && <Box $rotate>
         <h1 style={{alignSelf: "start"}}>외출 안내</h1>
         {
@@ -55,6 +60,6 @@ export const Apply = () => {
           })
         }
       </Box>
-    }
-  </_.Wrapper>
+    } */}
+  </>
 }

@@ -33,8 +33,14 @@ export const DataBox = styled.h2`
   align-self: start;
   flex-direction: column;
   width: 100%;
-  height: 105px;
+  height: 133px;
   overflow-y: scroll;
   word-break: break-all;
   white-space: pre-wrap;
+`
+
+export const PageButtonBox = styled.div`
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
 `

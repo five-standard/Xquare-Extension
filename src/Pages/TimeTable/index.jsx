@@ -2,7 +2,6 @@ import { useRecoilValue } from "recoil";
 import { toast } from "react-toastify";
 import { useQuery } from "react-query";
 import { messages, day, today } from "../../Utils/Utilities";
-import { Icon as IconElement } from "@iconify/react";
 import { getTimeTable } from "../../Api/TimeTable";
 import { MapBox } from "../../Components/MapBox";
 import { updator } from "../../Utils/Atoms";
@@ -15,13 +14,9 @@ export const TimeTable = () => {
   const { data } = useQuery(["timeTable", update], getTimeTable, {
     onError: () => toast.error(<b>{messages.timetable}</b>)
   })
-  
-  const handleOpen = () => {
-    window.open("https://dsmhs.djsch.kr/scheduleH/list.do?m=0203&s=dsmhs");
-  }
 
-  return <_.Wrapper>
-    <Box $rotate>
+  return <>
+    <Box height="100%" $rotate>
       <h1 style={{alignSelf: "start"}}>시간표 ({day})</h1>
       <_.SubjDataBox>
         {
@@ -41,9 +36,5 @@ export const TimeTable = () => {
         }
       </_.SubjDataBox>
     </Box>
-    <Box height="70px" style={{padding: "0 20px 0 20px"}} action={handleOpen} $cursor>
-      <h1 style={{fontSize: "20px", color: "#5C5960"}}>학사일정</h1>
-      <IconElement icon="ph:link-bold" color="#5C5960" width="25px" />
-    </Box>
-  </_.Wrapper>
+  </>
 }

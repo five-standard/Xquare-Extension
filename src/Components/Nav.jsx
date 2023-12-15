@@ -52,7 +52,8 @@ const Component = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
 `
 
 

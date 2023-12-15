@@ -23,7 +23,6 @@ export const App = () => {
 const Wrapper = styled.div`
   width: 450px;
   height: 450px;
-  padding: 10px;
   background: #F9F7FA;
   box-sizing: border-box;
   font-family: "Noto Sans KR";

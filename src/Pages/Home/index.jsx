@@ -50,7 +50,7 @@ export const Home = () => {
     if(date < lastDay) setDate(prev => prev+1);
   }
 
-  return <_.Wrapper>
+  return <>
     <Box height="70px" style={{paddingRight: "20px", cursor: `${!accessToken ? "pointer" : "default"}`}} action={() => !accessToken && navigate("/login")}>
       <_.ProfileBox>
         {
@@ -74,7 +74,7 @@ export const Home = () => {
         </_.LogoutBox>
       }
     </Box>
-    <Box $rotate>
+    <Box height="100%" $rotate>
       <_.MealTitleBox>
         <h1 style={{alignSelf: "start"}}>{year_month(date)} ({day})</h1>
         <div>
@@ -106,5 +106,5 @@ export const Home = () => {
         }
       </_.MealDataBox>
     </Box>
-  </_.Wrapper>
+  </>
 }
