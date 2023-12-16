@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { PointBox } from "../../Components/PointBox";
+import { PointBox } from "../../Components/Points/PointBox";
 import { Button } from "../../Components/Button";
 import { messages } from "../../Utils/Utilities";
 import { pointType } from "../../Utils/Types";
-import { Back } from "../../Components/Back";
+import { Back } from "../../Components/Common/Back";
 import { getPoints } from "../../Api/All";
 import * as _ from "./style";
 
