@@ -7,6 +7,7 @@ import { Dates, lastDay, messages, year_month } from "../../Utils/Utilities";
 import { dayType, mealType } from "../../Utils/Types";
 import { getTodayMeals } from "../../Api/Meal";
 import { Box as Component } from "../Box";
+import { Title } from "../Common/Title";
 
 export const MealBox = memo(() => {
   const [date, setDate] = useState(Dates.getDate());
@@ -33,7 +34,7 @@ export const MealBox = memo(() => {
 
   return <Component $rotate>
     <TopBox>
-      <h1>{year_month(date)} ({day})</h1>
+      <Title>{year_month(date)} ({day})</Title>
       <div>
         <DateButton icon="mingcute:up-fill" color="#5C5960" width="20px" onClick={handleNextMeal} />
         <h4 onClick={handleTodayMeal}>today</h4>
