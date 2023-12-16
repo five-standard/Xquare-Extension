@@ -30,7 +30,5 @@ const TextBox = styled.div`
 `
 
 const ImgElement = styled.img`
-  width: 40px;
-  height: 40px;
   border-radius: 50px;
 `

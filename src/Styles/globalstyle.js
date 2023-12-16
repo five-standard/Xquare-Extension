@@ -33,4 +33,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 12px;
     color: #77757A;
   }
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
 `;

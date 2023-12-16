@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useRefresh } from "../Hooks/useRefresh";
-import { Nav } from "../Components/Nav";
+import { Nav } from "../Components/Common/Nav";
 import { styled } from "styled-components";
 
 export const Layout = () => {

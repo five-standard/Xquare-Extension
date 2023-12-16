@@ -12,6 +12,6 @@ const Component = styled(Link)`
   align-self: start;
   justify-self: start;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px;
   box-sizing: border-box;
 `
