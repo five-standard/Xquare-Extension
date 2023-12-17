@@ -11,15 +11,19 @@ import { Updates } from "../Pages/Updates";
 export const Router = () => {
   return <MemoryRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout type="nav"/>}>
         <Route path="" element={<Home />} />
         <Route path="timetable" element={<TimeTable />} />
         <Route path="apply" element={<Apply />} />
         <Route path="all" element={<All />} />
       </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/points" element={<Points />} />
-      <Route path="/updates" element={<Updates />} />
+      <Route element={<Layout type="back"/>}>
+        <Route path="/login" element={<Login />} />
+        <Route path="/points" element={<Points />} />
+        <Route path="/updates" element={<Updates />} />
+        <Route path="/notices" />
+        <Route path="/profile" />
+      </Route>
     </Routes>
   </MemoryRouter>
 }

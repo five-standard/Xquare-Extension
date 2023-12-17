@@ -2,12 +2,17 @@ import { Outlet } from "react-router-dom";
 import { useRefresh } from "../Hooks/useRefresh";
 import { Nav } from "../Components/Common/Nav";
 import { styled } from "styled-components";
+import { Back } from "../Components/Common/Back";
 
-export const Layout = () => {
+export const Layout = ({type}) => {
   useRefresh();
 
   return <>
-    <Nav />
+    {
+      type === "nav"
+      ? <Nav />
+      : <Back />
+    }
     <Wrapper>
       <Outlet />
     </Wrapper> 
