@@ -4,7 +4,7 @@ import { useState } from "react";
 import { messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
-import { Back } from "../../Components/Back";
+import { Back } from "../../Components/Common/Back";
 import { postLogin } from "../../Api/Auth";
 import * as _ from "./style";
 

@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { messages } from "../../Utils/Utilities";
-import { Back } from "../../Components/Back";
+import { Back } from "../../Components/Common/Back";
 import { getUpdates } from "../../Api/All";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";

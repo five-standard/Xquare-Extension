@@ -21,24 +21,6 @@ export const RowBox = styled.div`
   }
 `
 
-export const TopBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-`
-
-export const DataBox = styled.h2`
-  display: flex;
-  align-self: start;
-  flex-direction: column;
-  width: 100%;
-  height: 133px;
-  overflow-y: scroll;
-  word-break: break-all;
-  white-space: pre-wrap;
-`
-
 export const PageButtonBox = styled.div`
   width: 90%;
   display: flex;
