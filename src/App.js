@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 import { RecoilRoot } from "recoil";
-import { GlobalStyle } from "./Styles/globalStyle";
+import { GlobalStyle } from "./Styles/globalstyle";
 import 'react-toastify/dist/ReactToastify.css';
 import { Router } from "./Router/Router";
 import { QueryClient, QueryClientProvider } from "react-query";
