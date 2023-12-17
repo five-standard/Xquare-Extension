@@ -5,7 +5,6 @@ import { PointBox } from "../../Components/Points/PointBox";
 import { Button } from "../../Components/Button";
 import { messages } from "../../Utils/Utilities";
 import { pointType } from "../../Utils/Types";
-import { Back } from "../../Components/Common/Back";
 import { getPoints } from "../../Api/All";
 import * as _ from "./style";
 
@@ -18,11 +17,13 @@ export const Points = () => {
   }
 
   const { data } = useQuery(["points", item], () => getPoints(pointType[item]), {
-    onError: () => toast.error(<b>{messages.points}</b>)
+    onError: () => toast.error(<b>{messages.points}</b>),
+    select: (data) => {
+      return data.data.point_histories;
+    }
   })
 
-  return <_.Wrapper>
-    <Back />
+  return <>
     <_.ButtonBox>
       <Button text="전체" id={item==="all" ? "selected" : ""} className="all" action={handleClick} />
       <Button text="상점" id={item==="good" ? "selected" : ""} className="good" action={handleClick} />
@@ -30,7 +31,7 @@ export const Points = () => {
     </_.ButtonBox>
     <_.DataBox>
       {
-        data?.data.point_histories.map((i, j) => {
+        data?.map((i, j) => {
           return <PointBox 
             key={j}
             data={{
@@ -43,5 +44,5 @@ export const Points = () => {
         })
       }
     </_.DataBox>
-  </_.Wrapper>
+  </>
 }

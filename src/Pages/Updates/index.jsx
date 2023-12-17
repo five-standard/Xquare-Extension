@@ -1,23 +1,25 @@
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { messages } from "../../Utils/Utilities";
-import { Back } from "../../Components/Common/Back";
 import { getUpdates } from "../../Api/All";
 import { Box } from "../../Components/Box";
 import * as _ from "./style";
 
 export const Updates = () => {
   const { data } = useQuery(["updates"], getUpdates, {
-    onError: () => toast.error(<b>{messages.updates}</b>)
+    onError: () => toast.error(<b>{messages.updates}</b>),
+    select: (data) => {
+      return [...data.data].reverse();
+    }
   })
+  const { REACT_APP_VER } = process.env;
 
   return <_.Wrapper>
-    <Back />
     <_.DataBox>
       {
         data
-        ? data.data.reverse().map((i, j) => {
-          return <Box key={j} $rotate style={{border: `${i.ver === process.env.REACT_APP_VER ? "0.1px solid black" : ""}`}}>
+        ? data.map((i, j) => {
+          return <Box key={j} $rotate style={{border: `${i.ver === REACT_APP_VER ? "0.1px solid black" : ""}`}}>
             <_.Top>
               <h1>{i.ver}</h1>
               <h2>{i.date}</h2>

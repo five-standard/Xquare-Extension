@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   gap: 15px;
-  display: grid;
-  place-items: center center;
-  grid-template-rows: 1fr 99fr;
+  display: flex;
+  align-items: center;
+  flex-direction: center;
   width: 100%;
-  height: 450px;
+  height: 100%;
 `
 
 export const InputBox = styled.div`

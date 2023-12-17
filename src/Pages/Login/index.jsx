@@ -4,7 +4,6 @@ import { useState } from "react";
 import { messages } from "../../Utils/Utilities";
 import { Button } from "../../Components/Button";
 import { Input } from "../../Components/Input";
-import { Back } from "../../Components/Common/Back";
 import { postLogin } from "../../Api/Auth";
 import * as _ from "./style";
 
@@ -30,7 +29,6 @@ export const Login = () => {
   }
 
   return <_.Wrapper>
-    <Back />
     <_.InputBox>
       <Input placeholder="아이디" value={data.account_id} action={handleChange} id="account_id" />
       <Input placeholder="비밀번호" value={data.password} action={handleChange} id="password" type="password" />
