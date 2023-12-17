@@ -13,11 +13,11 @@ export const TimeTable = () => {
 
   const { data } = useQuery(["timeTable", update], getTimeTable, {
     onError: () => toast.error(<b>{messages.timetable}</b>),
-    select: (result) => {
-      const { data } = result;
-      return data.week_timetable.filter(i => i.date === "2023-12-14")[0]?.day_timetable;
+    select: (data) => {
+      const { week_timetable } = data.data;
+      return week_timetable.filter(i => i.date === today)[0]?.day_timetable;
     }
-  })
+  });
 
   return <>
     <Box $rotate>
