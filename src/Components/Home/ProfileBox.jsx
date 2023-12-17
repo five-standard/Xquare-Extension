@@ -20,7 +20,7 @@ export const ProfileBox = memo(() => {
   const { data } = useQuery(["user", [update]], () => accessToken && getUserSimple(), {
     onError: () => toast.error(<b>{messages.user}</b>),
     select: (data) => {
-      return data.data;
+      return data?.data;
     }
   })
 
