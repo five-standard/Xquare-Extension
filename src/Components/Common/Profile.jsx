@@ -21,6 +21,7 @@ export const Profile = ({ profile=sampleData }) => {
 const Component = styled.div`
   gap: 15px;
   display: flex;
+  align-items: center;
 `
 
 const TextBox = styled.div`
