@@ -36,7 +36,7 @@ export const ProfileBox = memo(() => {
     return <Component>
       <Profile
         profile={data && {
-          img: data.profile_file_name,
+          img: data.profile_file_name ? data.profile_file_name : Default,
           name: data.name,
           sub: `상점 ${data?.good_point}점 벌점 ${data?.bad_point}점`,
         }}
