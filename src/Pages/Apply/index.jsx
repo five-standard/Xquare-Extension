@@ -42,8 +42,8 @@ export const Apply = () => {
       </_.ButtonBox>
     </Box>
     <_.PageButtonBox>
-      <PageButton to="/move" text="교실 이동" icon="mdi:exit-run" />
-      <PageButton to="/move" text="외출 신청" icon="mdi:bicycle" />
+      <PageButton to="/apply" text="교실 이동" icon="mdi:exit-run" />
+      <PageButton to="/apply" text="외출 신청" icon="mdi:bicycle" />
     </_.PageButtonBox>
     {/* {
       picnic && <Box $rotate>
