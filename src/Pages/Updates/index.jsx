@@ -19,7 +19,7 @@ export const Updates = () => {
       {
         data
         ? data.map((i, j) => {
-          return <Box key={j} $rotate style={{border: `${i.ver === REACT_APP_VER ? "0.1px solid black" : ""}`}}>
+          return <Box key={j} $rotate style={{border: `${i.ver === REACT_APP_VER ? "0.1px solid #9550F9" : ""}`}}>
             <_.Top>
               <h1>{i.ver}</h1>
               <h2>{i.date}</h2>
