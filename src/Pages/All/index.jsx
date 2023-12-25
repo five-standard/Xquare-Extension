@@ -1,7 +1,7 @@
 import { PageButton } from "../../Components/Common/PageButton";
 import { NoticeBox } from "../../Components/All/NoticeBox";
-import * as _ from "./style";
 import { DirectBox } from "../../Components/All/DirectBox";
+import * as _ from "./style";
 
 export const All = () => {
   return <>
