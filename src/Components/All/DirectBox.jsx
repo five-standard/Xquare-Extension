@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { toast } from "react-toastify";
 import { useQuery } from "react-query";
-import { day, messages } from "../../Utils/Utilities";
+import { Dates, day, messages } from "../../Utils/Utilities";
 import { getDirectors } from "../../Api/All";
 import { Box } from "../Box";
 
@@ -10,7 +10,7 @@ export const DirectBox = () => {
   const { data } = useQuery(["directrs"], getDirectors, {
     onError: () => toast.error(<b>{messages.director}</b>),
     select: (data) => {
-      return data.data.self_study_list[4]?.teacher;
+      return data.data.self_study_list[Dates.getDate()-1]?.teacher;
     }
   })
 
@@ -26,6 +26,8 @@ export const DirectBox = () => {
                 <h1>{j+1}층</h1>
                 <h2>{i} 선생님</h2>
               </Box>
+            } else {
+              return <></>
             }
           })
           : <h2 style={{alignSelf: "start"}}>자습 감독이 없습니다</h2>
