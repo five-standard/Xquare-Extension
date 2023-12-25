@@ -19,7 +19,7 @@ export const Profile = ({ profile=sampleData }) => {
 
 
 const Component = styled.div`
-  gap: 15px;
+  gap: 10px;
   display: flex;
   align-items: center;
 `
