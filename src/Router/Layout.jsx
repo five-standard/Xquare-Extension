@@ -1,23 +1,21 @@
 import { Outlet } from "react-router-dom";
-import { useRefresh } from "../Hooks/useRefresh";
+import { useRefresh } from "../hooks/useRefresh";
 import { Nav } from "../Components/Common/Nav";
 import { styled } from "styled-components";
 import { Back } from "../Components/Common/Back";
 
-export const Layout = ({type}) => {
+export const Layout = ({ type }) => {
   useRefresh();
 
-  return <>
-    {
-      type === "nav"
-      ? <Nav />
-      : <Back />
-    }
-    <Wrapper>
-      <Outlet />
-    </Wrapper> 
-  </>
-}
+  return (
+    <>
+      {type === "nav" ? <Nav /> : <Back />}
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
+    </>
+  );
+};
 
 const Wrapper = styled.div`
   gap: 10px;
@@ -28,4 +26,4 @@ const Wrapper = styled.div`
   height: calc(100% - 35px);
   box-sizing: border-box;
   padding-bottom: 20px;
-`
+`;
