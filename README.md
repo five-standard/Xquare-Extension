@@ -4,6 +4,9 @@
 
 불편한 점이 있으시다면 dbrrlwns1127@dsm.hs.kr로 문의해주세요.
 
+(2024년 10월 기준 설치된 컴퓨터 수 총 20대)
+<img width="1400" alt="스크린샷 2024-11-04 오후 7 19 14" src="https://github.com/user-attachments/assets/a58a0671-f627-497b-9b13-10933adad74e">
+
 ## 기술 스택
 <div align=center>
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
