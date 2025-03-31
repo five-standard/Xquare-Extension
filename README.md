@@ -3,6 +3,7 @@
 ## Xquare Chrome Extension
 **📅 진행 기간** 2023. 09 ~ 2024. 01  
 **💻 서비스 URL** https://chromewebstore.google.com/detail/xquare/apjpfknndginnahobenblkdfbibckcom?hl=ko  
+**🧑‍🎨 디자인 URL** https://www.figma.com/design/wkrqH09fDmLq3ippCFqaFx/XquareFrontDesign?node-id=0-1&t=zYh7BaK66aHW8Uos-1
 
 ## INTRO
 윈도우 유저들을 위해 제작한 **(구)** 교내 학교생활 관리 서비스 Xquare의 **보조 클라이언트**입니다.  
